@@ -1,7 +1,7 @@
 # warpgui
 GUI for Cloudflare WARP
 
-Dependencies: fping expect nftables
+**Dependencies:** fping expect nftables
 
 Cloudflare (Linux desktop client): https://developers.cloudflare.com/warp-client/get-started/linux/
 
