@@ -14,10 +14,11 @@ group=Applications/Internet
 0=GUI for Cloudflare WARP
 1=URL: https://developers.cloudflare.com/warp-client/get-started/linux/
 2=
-3=Before installing the 'warpgui' package, install the 'cloudflare_warp' package:
-4=https://pkg.cloudflareclient.com/packages/cloudflare-warp
-5=---
-6=More information: /usr/share/doc/package_name/repack.txt
+3=Since there are no cloudflare-warp packages for Mageia, warpgui packages already contain
+4=/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare packages:
+5=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
+6=---
+7=More information: /usr/share/doc/package_name/repack.txt
 
 [MAINTAINER]
 maintainer=Alex Kotov
@@ -29,13 +30,13 @@ vendor=alex_q_2000 (C) 2022
 summary=Clouflare WARP GUI
 
 [URLCOPY]
-urlcopy=https://github.com/AKotov-dev/warpgui
+urlcopy=https://pkg.cloudflareclient.com/packages/cloudflare-warp
 
 [LICENSE]
 license=GPLv3
 
 [DEPS]
-deps=cloudflare-warp fping expect
+deps=fping expect nftables
 
 [META]
 meta=0
@@ -47,27 +48,48 @@ noarch=0
 sign=0
 
 [DEB]
-deb=1
+deb=0
 
 [FILES]
 0=/usr/share/warpgui/
 1=/usr/share/icons/warpgui.png
 2=/usr/share/applications/warpgui.desktop
 3=/usr/share/doc/warpgui/
+4=/usr/bin/warp-cli
+5=/usr/bin/warp-svc
+6=/etc/systemd/system/warp-svc.service
 
 [AFTERINSTALL]
 0=#!/bin/bash
-1=#ldconfig
-2=#update-desktop-database -q /usr/share/applications
-3=#update-mime-database /usr/share/mime
-4=#gtk-update-icon-cache -q -f /usr/share/icons/hicolor
+1=if [ $1 -eq 1 ]; then
+2=systemctl daemon-reload
+3=systemctl enable warp-svc.service
+4=systemctl start warp-svc.service
+5=fi
+6=
+7=if [ $1 -eq 2 ]; then
+8=systemctl daemon-reload
+9=systemctl enable warp-svc.service
+10=systemctl start warp-svc.service
+11=fi
 
-[AFTERREMOVE]
+[BEFOREINSTALL]
 0=#!/bin/bash
-1=#ldconfig
-2=#update-desktop-database -q /usr/share/applications
-3=#update-mime-database /usr/share/mime
-4=#gtk-update-icon-cache -q -f /usr/share/icons/hicolor
+1=if [ $1 -eq 2 ]; then
+2=systemctl stop warp-svc.service >/dev/null 2>&1
+3=fi
+
+[BEFOREREMOVE]
+0=#!/bin/bash
+1=if [ $1 -eq 0 ]; then
+2=systemctl stop warp-svc.service >/dev/null 2>&1
+3=systemctl disable warp-svc.service
+4=fi
+5=
+6=if [ $1 -eq 1 ]; then
+7=systemctl stop warp-svc.service
+8=systemctl disable warp-svc.service
+9=fi
 
 [URL32]
 url32=https://github.com/AKotov-dev/warpgui
@@ -89,5 +111,6 @@ toolversion=2.2.0
 1=---
 2=URL: https://developers.cloudflare.com/warp-client/get-started/linux/
 3=
-4=Before installing the 'warpgui' package, install the 'cloudflare_warp' package:
-5=https://pkg.cloudflareclient.com/packages/cloudflare-warp
+4=Since there are no cloudflare-warp packages for Mageia, warpgui packages already contain
+5=/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare packages:
+6=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp

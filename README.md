@@ -1,9 +1,8 @@
 # warpgui
 GUI for Cloudflare WARP
 
-Dependencies: cloudflare-warp fping expect
+Dependencies: fping expect nftables
 
 Cloudflare: https://developers.cloudflare.com/warp-client/get-started/linux/
 
-Before installing the `warpgui` package, install the `cloudflare_warp` package:
-https://pkg.cloudflareclient.com/packages/cloudflare-warp
+Since there are no `cloudflare-warp` package for Mageia, `warpgui` packages already contain `/usr/bin/warp-cli` and `/usr/bin/warp-svc` from the original Cloudflare packages: https://pkg.cloudflareclient.com/packages/cloudflare-warp
