@@ -1,0 +1,6 @@
+{"version":1,"strings":[
+{"hash":374384,"name":"tmainform.caption","sourcebytes":[87,65,82,80],"value":"WARP"},
+{"hash":106991073,"name":"tmainform.toolbar1.caption","sourcebytes":[84,111,111,108,66,97,114,49],"value":"ToolBar1"},
+{"hash":160486417,"name":"tmainform.toolbutton1.caption","sourcebytes":[84,111,111,108,66,117,116,116,111,110,49],"value":"ToolButton1"},
+{"hash":167724286,"name":"tmainform.label1.caption","sourcebytes":[119,97,105,116,105,110,103,32,102,111,114,32,99,111,110,110,101,99,116,105,111,110],"value":"waiting for connection"}
+]}

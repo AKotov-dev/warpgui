@@ -1,0 +1,93 @@
+[NAME]
+name=warpgui
+
+[VERSION]
+version=0.1
+
+[RELEASE]
+release=0.mrx9
+
+[GROUP]
+group=Applications/Internet
+
+[DESCRIPTION]
+0=GUI for Cloudflare WARP
+1=URL: https://developers.cloudflare.com/warp-client/get-started/linux/
+2=
+3=Before installing the 'warpgui' package, install the 'cloudflare_warp' package:
+4=https://pkg.cloudflareclient.com/packages/cloudflare-warp
+5=---
+6=More information: /usr/share/doc/package_name/repack.txt
+
+[MAINTAINER]
+maintainer=Alex Kotov
+
+[VENDOR]
+vendor=alex_q_2000 (C) 2022
+
+[SUMMARY]
+summary=Clouflare WARP GUI
+
+[URLCOPY]
+urlcopy=https://github.com/AKotov-dev/warpgui
+
+[LICENSE]
+license=GPLv3
+
+[DEPS]
+deps=cloudflare-warp fping expect
+
+[META]
+meta=0
+
+[NOARCH]
+noarch=0
+
+[SIGN]
+sign=0
+
+[DEB]
+deb=1
+
+[FILES]
+0=/usr/share/warpgui/
+1=/usr/share/icons/warpgui.png
+2=/usr/share/applications/warpgui.desktop
+3=/usr/share/doc/warpgui/
+
+[AFTERINSTALL]
+0=#!/bin/bash
+1=#ldconfig
+2=#update-desktop-database -q /usr/share/applications
+3=#update-mime-database /usr/share/mime
+4=#gtk-update-icon-cache -q -f /usr/share/icons/hicolor
+
+[AFTERREMOVE]
+0=#!/bin/bash
+1=#ldconfig
+2=#update-desktop-database -q /usr/share/applications
+3=#update-mime-database /usr/share/mime
+4=#gtk-update-icon-cache -q -f /usr/share/icons/hicolor
+
+[URL32]
+url32=https://github.com/AKotov-dev/warpgui
+
+[URL64]
+url64=https://github.com/AKotov-dev/warpgui
+
+[PROGRAMNAME]
+programname=warpgui
+
+[DEVTOOL]
+devtool=Lazarus
+
+[TOOLVERSION]
+toolversion=2.2.0
+
+[INFO]
+0=GUI for Cloudflare WARP
+1=---
+2=URL: https://developers.cloudflare.com/warp-client/get-started/linux/
+3=
+4=Before installing the 'warpgui' package, install the 'cloudflare_warp' package:
+5=https://pkg.cloudflareclient.com/packages/cloudflare-warp

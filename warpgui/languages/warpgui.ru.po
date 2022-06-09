@@ -1,0 +1,49 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: alex_q_2000\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Language: ru\n"
+
+#: tmainform.caption
+msgid "WARP"
+msgstr ""
+
+#: tmainform.label1.caption
+msgctxt "tmainform.label1.caption"
+msgid "waiting for connection"
+msgstr "ожидание соединения"
+
+#: tmainform.toolbar1.caption
+msgid "ToolBar1"
+msgstr ""
+
+#: tmainform.toolbutton1.caption
+msgid "ToolButton1"
+msgstr ""
+
+#: unit1.connectionattempt
+msgid "connection attempt..."
+msgstr "попытка подключения..."
+
+#: unit1.connectionisencrypted
+msgctxt "unit1.connectionisencrypted"
+msgid "connection is encrypted"
+msgstr "соединение зашифровано"
+
+#: unit1.disconnection
+msgid "disconnection..."
+msgstr "отключение..."
+
+#: unit1.waitingforconnection
+msgctxt "unit1.waitingforconnection"
+msgid "waiting for connection..."
+msgstr "ожидание соединения..."
+
