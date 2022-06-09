@@ -104,15 +104,17 @@ begin
   //Если WARP зарегистрирован...
   if Registered then
   begin
+
     if ToolButton1.ImageIndex = 0 then
     begin
       Label1.Caption := ConnectionAttempt;
-      StartProcess('warp-cli connect');
+      StartProcess(
+        'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done; warp-cli connect');
     end
     else
     begin
       Label1.Caption := Disconnection;
-      StartProcess('while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 2; done');
+      StartProcess('while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done');
     end;
   end
   else
