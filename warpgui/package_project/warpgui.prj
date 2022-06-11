@@ -60,36 +60,44 @@ deb=0
 6=/etc/systemd/system/warp-svc.service
 
 [AFTERINSTALL]
-0=#!/bin/bash
+0=#Первая установка
 1=if [ $1 -eq 1 ]; then
 2=systemctl daemon-reload
-3=systemctl enable warp-svc.service
-4=systemctl start warp-svc.service
+3=systemctl enable warp-svc
+4=systemctl restart warp-svc
 5=fi
 6=
-7=if [ $1 -eq 2 ]; then
-8=systemctl daemon-reload
-9=systemctl enable warp-svc.service
-10=systemctl start warp-svc.service
-11=fi
+7=#Обновление
+8=if [ $1 -eq 2 ]; then
+9=systemctl daemon-reload
+10=systemctl enable warp-svc
+11=systemctl restart warp-svc
+12=fi
+
+[AFTERREMOVE]
+0=#Окончательное удаление
+1=if [ $1 -eq 0 ]; then systemctl daemon-reload; fi
+2=
+3=#Удаление при обновлении
+4=if [ $1 -eq 1 ]; then
+5=systemctl daemon-reload
+6=systemctl enable warp-svc
+7=systemctl restart warp-svc
+8=fi
 
 [BEFOREINSTALL]
-0=#!/bin/bash
+0=#Обновление
 1=if [ $1 -eq 2 ]; then
-2=systemctl stop warp-svc.service >/dev/null 2>&1
-3=fi
+2=systemctl stop warp-svc
+3=systemctl disable warp-svc
+4=fi
 
 [BEFOREREMOVE]
-0=#!/bin/bash
-1=if [ $1 -eq 0 ]; then
-2=systemctl stop warp-svc.service >/dev/null 2>&1
-3=systemctl disable warp-svc.service
-4=fi
-5=
-6=if [ $1 -eq 1 ]; then
-7=systemctl stop warp-svc.service
-8=systemctl disable warp-svc.service
-9=fi
+0=#Перед удалением при обновлении
+1=#if [ $1 -eq 1 ]; then
+2=#systemctl stop warp-svc
+3=#systemctl disable warp-svc
+4=#fi
 
 [URL32]
 url32=https://github.com/AKotov-dev/warpgui
@@ -114,3 +122,9 @@ toolversion=2.2.0
 4=Since there are no cloudflare-warp packages for Mageia, warpgui packages already contain
 5=/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare packages:
 6=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
+7=
+8=v0.2
+9=+ Sent/Received (TX/RX) indicator
+10=+ Improved installation of warp-svc.service in rpm-package
+11=
+12=v0.1 - First release

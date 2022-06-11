@@ -50,7 +50,6 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="95"/>
         <CursorPos X="27" Y="106"/>
         <UsageCount Value="28"/>
         <Loaded Value="True"/>
@@ -61,8 +60,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingTRD"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="58"/>
-        <CursorPos X="44" Y="65"/>
+        <CursorPos X="26" Y="2"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
