@@ -75,15 +75,12 @@ deb=0
 12=fi
 
 [AFTERREMOVE]
-0=#Окончательное удаление
-1=if [ $1 -eq 0 ]; then systemctl daemon-reload; fi
-2=
-3=#Удаление при обновлении
-4=if [ $1 -eq 1 ]; then
-5=systemctl daemon-reload
-6=systemctl enable warp-svc
-7=systemctl restart warp-svc
-8=fi
+0=#Удаление при обновлении
+1=if [ $1 -eq 1 ]; then
+2=systemctl daemon-reload
+3=systemctl enable warp-svc
+4=systemctl restart warp-svc
+5=fi
 
 [BEFOREINSTALL]
 0=#Обновление
@@ -93,11 +90,12 @@ deb=0
 4=fi
 
 [BEFOREREMOVE]
-0=#Перед удалением при обновлении
-1=#if [ $1 -eq 1 ]; then
-2=#systemctl stop warp-svc
-3=#systemctl disable warp-svc
-4=#fi
+0=#Окончательное удаление
+1=if [ $1 -eq 0 ]; then
+2=systemctl stop warp-svc
+3=systemctl disable warp-svc
+4=systemctl daemon-reload
+5=fi
 
 [URL32]
 url32=https://github.com/AKotov-dev/warpgui
