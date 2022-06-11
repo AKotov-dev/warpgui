@@ -2,7 +2,7 @@
 name=warpgui
 
 [VERSION]
-version=0.1
+version=0.2
 
 [RELEASE]
 release=0.mrx9
@@ -36,7 +36,7 @@ urlcopy=https://pkg.cloudflareclient.com/packages/cloudflare-warp
 license=GPLv3
 
 [DEPS]
-deps=fping expect nftables
+deps=expect nftables
 
 [META]
 meta=0
@@ -122,7 +122,9 @@ toolversion=2.2.0
 6=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
 7=
 8=v0.2
-9=+ Sent/Received (TX/RX) indicator
-10=+ Improved installation of warp-svc.service in rpm-package
+9=+ Sent/Received (IN/OUT) indicator
+10=
 11=
-12=v0.1 - First release
+12=v0.1
+13=+ First release
+14=+ Improved installation of warp-svc.service in rpm-package (spec)

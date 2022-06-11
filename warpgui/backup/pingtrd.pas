@@ -18,6 +18,7 @@ type
 
     procedure Execute; override;
     procedure ShowStatus;
+    procedure ShowUpDown;
 
   end;
 
@@ -38,22 +39,28 @@ begin
       PingStr := TStringList.Create;
       PingProcess := TProcess.Create(nil);
 
-      PingProcess.Executable := 'bash';  //sh или xterm
+      PingProcess.Executable := 'bash';
       PingProcess.Parameters.Add('-c');
       PingProcess.Parameters.Add(
-        '[[ $(fping google.com) && $(ip -br a | grep CloudflareWARP) ]] && ' +
-        'echo "yes" || echo "no"');
+        '[[ $(ip -br a | grep CloudflareWARP) ]] && echo "yes" || echo "no"');
 
       PingProcess.Options := [poUsePipes, poWaitOnExit];
 
       //Если WARP зарегистрирован...
       if Registered then
       begin
+        //Статус ON/OFF
         PingProcess.Execute;
-
         PingStr.LoadFromStream(PingProcess.Output);
-
         Synchronize(@ShowStatus);
+
+        //TX/RX
+        PingProcess.Parameters.Delete(1);
+        PingProcess.Parameters.Add('warp-cli warp-stats | awk ' +
+          '''' + 'NR == 3{print$2$4}' + '''');
+        PingProcess.Execute;
+        PingStr.LoadFromStream(PingProcess.Output);
+        Synchronize(@ShowUpDown);
       end;
 
       Sleep(1000);
@@ -63,22 +70,41 @@ begin
     end;
 end;
 
+//Вывод состояния (ON/OFF)
 procedure CheckPing.ShowStatus;
 begin
-  if Trim(PingStr[0]) = 'yes' then
+  with MainForm do
   begin
-    MainForm.ToolButton1.ImageIndex := 1;
-    MainForm.Label1.Color := clGreen;
-    MainForm.Label1.Caption := ConnectionIsEncrypted;
-  end
-  else
-  begin
-    MainForm.ToolButton1.ImageIndex := 0;
-    MainForm.Label1.Color := clRed;
-    MainForm.Label1.Caption := WaitingForConnection;
+    if Trim(PingStr[0]) = 'yes' then
+    begin
+      ToolButton1.ImageIndex := 1;
+      Label1.Color := clGreen;
+      Label1.Caption := ConnectionIsEncrypted;
+    end
+    else
+    begin
+      ToolButton1.ImageIndex := 0;
+      Label1.Color := clRed;
+      Label1.Caption := WaitingForConnection;
+    end;
+
+    ToolButton1.Repaint;
+    Label1.Repaint;
   end;
-  MainForm.ToolButton1.Repaint;
-  MainForm.Label1.Repaint;
+end;
+
+//Вывод TX/RX (отправлено/принято)
+procedure CheckPing.ShowUpDown;
+begin
+  if Trim(PingStr.Text) <> '' then
+  begin
+    //Разделяем два пришедших значения
+    PingStr.Delimiter := ';';
+    PingStr.StrictDelimiter := True;
+    PingStr.DelimitedText := PingStr[0];
+
+    MainForm.ToolButton1.Caption := Concat('IN-', PingStr[1], '    ', 'OUT-', PingStr[0]);
+  end;
 end;
 
 end.

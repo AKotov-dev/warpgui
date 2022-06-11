@@ -1,38 +1,46 @@
 object MainForm: TMainForm
   Left = 316
-  Height = 95
+  Height = 117
   Top = 124
-  Width = 232
+  Width = 238
+  AlphaBlendValue = 225
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'WARP'
-  ClientHeight = 95
-  ClientWidth = 232
+  ClientHeight = 117
+  ClientWidth = 238
   OnCreate = FormCreate
   SessionProperties = 'Top;Left'
   LCLVersion = '2.2.0.4'
   object ToolBar1: TToolBar
     Left = 0
-    Height = 72
+    Height = 92
     Top = 0
-    Width = 232
+    Width = 238
     AutoSize = True
-    ButtonHeight = 72
-    ButtonWidth = 220
+    ButtonHeight = 92
+    ButtonWidth = 230
     Caption = 'ToolBar1'
     EdgeBorders = []
-    EdgeInner = esLowered
+    EdgeInner = esNone
+    EdgeOuter = esNone
+    Font.Height = -13
+    Font.Name = 'Sans'
     Images = ImageList1
+    ParentFont = False
+    ShowCaptions = True
     TabOrder = 0
+    Wrapable = False
     object ToolButton1: TToolButton
       Cursor = crHandPoint
       Left = 1
       Top = 0
-      Caption = 'ToolButton1'
+      Caption = 'IN-000,0kB    OUT-000,0kB'
       ImageIndex = 0
       OnClick = ToolButton1Click
       ParentShowHint = False
+      ShowCaption = False
     end
   end
   object Label1: TLabel
@@ -40,9 +48,9 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrBottom
     Cursor = crHandPoint
     Left = 0
-    Height = 21
-    Top = 72
-    Width = 232
+    Height = 23
+    Top = 92
+    Width = 238
     Align = alBottom
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
@@ -154,7 +162,7 @@ object MainForm: TMainForm
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
-    Left = 152
+    Left = 168
     Top = 8
   end
 end

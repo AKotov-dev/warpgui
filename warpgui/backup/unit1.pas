@@ -104,7 +104,6 @@ begin
   //Если WARP зарегистрирован...
   if Registered then
   begin
-
     if ToolButton1.ImageIndex = 0 then
     begin
       Label1.Caption := ConnectionAttempt;
@@ -126,6 +125,8 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var
   FCheckPingThread: TThread;
 begin
+  MainForm.Caption := Application.Title;
+
   //Проверка регистрации/регистрация WARP (Registered=False/True)
   WarpRegister;
 

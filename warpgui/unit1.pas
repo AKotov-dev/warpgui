@@ -125,6 +125,8 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var
   FCheckPingThread: TThread;
 begin
+  MainForm.Caption := Application.Title;
+
   //Проверка регистрации/регистрация WARP (Registered=False/True)
   WarpRegister;
 

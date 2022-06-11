@@ -26,7 +26,7 @@ msgid "ToolBar1"
 msgstr ""
 
 #: tmainform.toolbutton1.caption
-msgid "ToolButton1"
+msgid "IN-0,0kB    OUT-0,0kB"
 msgstr ""
 
 #: unit1.connectionattempt
