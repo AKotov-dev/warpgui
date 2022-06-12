@@ -22,6 +22,7 @@ type
     procedure WarpRegister;
     procedure StartProcess(command: string);
     procedure ToolButton1Click(Sender: TObject);
+
   private
 
   public
@@ -33,6 +34,9 @@ resourcestring
   WaitingForConnection = 'waiting for connection...';
   ConnectionAttempt = 'connection attempt...';
   Disconnection = 'disconnection...';
+  WarpSVCStatus = 'warp-svc.service is not running!' + sLineBreak +
+    sLineBreak + 'systemctl enable warp-svc.service' + sLineBreak +
+    'systemctl restart warp-svc.service';
 
 var
   Registered: boolean; //Флаг регистрации WARP
@@ -46,7 +50,9 @@ uses PingTRD;
 
 { TMainForm }
 
-//Регистрация скриптом "register.sh" из "autoexpect warp-cli register" (пакет expect)
+
+//1. Проверка статуса warp-svc.service (active/inactive)
+//2. Регистрация скриптом "register.sh" из "autoexpect warp-cli register" (пакет expect)
 procedure TMainForm.WarpRegister;
 var
   S: TStringList;
@@ -57,12 +63,26 @@ begin
   try
     ExProcess.Executable := '/bin/bash';
     ExProcess.Parameters.Add('-c');
+    ExProcess.Options := ExProcess.Options + [poUsePipes];  //poWaitOnExit,
+
+    //1. Проверка статуса warp-svc.service
+    ExProcess.Parameters.Add('systemctl is-active warp-svc.service');
+    ExProcess.Execute;
+    S.LoadFromStream(ExProcess.Output);
+
+    if S[0] <> 'active' then
+    begin
+      MessageDlg(WarpSVCStatus, mtWarning, [mbOK], 0);
+      Application.Terminate;
+    end;
+
+    //2. Проверка регистрации (warp-cli-register)
+    ExProcess.Parameters.Delete(1);
     ExProcess.Parameters.Add(
       '[[ -n $(grep yes ~/.local/share/warp/accepted-tos.txt) ]] || "' +
       ExtractFilePath(ParamStr(0)) + 'register.sh"; ' +
       'grep yes ~/.local/share/warp/accepted-tos.txt');
 
-    ExProcess.Options := ExProcess.Options + [poUsePipes];  //poWaitOnExit,
     ExProcess.Execute;
 
     S.LoadFromStream(ExProcess.Output);

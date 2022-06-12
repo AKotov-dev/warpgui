@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 316
+  Left = 314
   Height = 117
-  Top = 124
+  Top = 125
   Width = 238
   AlphaBlendValue = 225
   AutoSize = True
@@ -162,7 +162,7 @@ object MainForm: TMainForm
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
-    Left = 168
+    Left = 176
     Top = 8
   end
 end

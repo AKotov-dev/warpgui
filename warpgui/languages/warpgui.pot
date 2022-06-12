@@ -36,3 +36,11 @@ msgctxt "unit1.waitingforconnection"
 msgid "waiting for connection..."
 msgstr ""
 
+#: unit1.warpsvcstatus
+msgid ""
+"warp-svc.service is not running!\n"
+"\n"
+"systemctl enable warp-svc.service\n"
+"systemctl restart warp-svc.service"
+msgstr ""
+
