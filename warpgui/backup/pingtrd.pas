@@ -40,16 +40,15 @@ begin
       PingProcess := TProcess.Create(nil);
 
       PingProcess.Executable := 'bash';
-      PingProcess.Parameters.Add('-c');
-      PingProcess.Parameters.Add(
-        '[[ $(ip -br a | grep CloudflareWARP) ]] && echo "yes" || echo "no"');
-
       PingProcess.Options := [poUsePipes, poWaitOnExit];
+      PingProcess.Parameters.Add('-c');
 
       //Если WARP зарегистрирован...
       if Registered then
       begin
         //Статус ON/OFF
+        PingProcess.Parameters.Add(
+          '[[ $(ip -br a | grep CloudflareWARP) ]] && echo "yes" || echo "no"');
         PingProcess.Execute;
         PingStr.LoadFromStream(PingProcess.Output);
         Synchronize(@ShowStatus);
@@ -77,19 +76,19 @@ begin
   begin
     if Trim(PingStr[0]) = 'yes' then
     begin
-      ToolButton1.ImageIndex := 1;
-      Label1.Color := clGreen;
-      Label1.Caption := ConnectionIsEncrypted;
+      StartBtn.ImageIndex := 1;
+      StatusLabel.Color := clGreen;
+      StatusLabel.Caption := ConnectionIsEncrypted;
     end
     else
     begin
-      ToolButton1.ImageIndex := 0;
-      Label1.Color := clRed;
-      Label1.Caption := WaitingForConnection;
+      StartBtn.ImageIndex := 0;
+      StatusLabel.Color := clRed;
+      StatusLabel.Caption := WaitingForConnection;
     end;
 
-    ToolButton1.Repaint;
-    Label1.Repaint;
+    StartBtn.Repaint;
+    StatusLabel.Repaint;
   end;
 end;
 
@@ -103,7 +102,8 @@ begin
     PingStr.StrictDelimiter := True;
     PingStr.DelimitedText := PingStr[0];
 
-    MainForm.ToolButton1.Caption := Concat('IN-', PingStr[1], '    ', 'OUT-', PingStr[0]);
+    MainForm.StartBtn.Caption :=
+      Concat('IN-', PingStr[1], '    ', 'OUT-', PingStr[0]);
   end;
 end;
 

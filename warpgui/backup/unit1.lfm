@@ -27,23 +27,24 @@ object MainForm: TMainForm
     EdgeOuter = esNone
     Font.Height = -13
     Font.Name = 'Sans'
+    HotImages = ImageList1
     Images = ImageList1
     ParentFont = False
     ShowCaptions = True
     TabOrder = 0
     Wrapable = False
-    object ToolButton1: TToolButton
+    object StartBtn: TToolButton
       Cursor = crHandPoint
       Left = 1
       Top = 0
       Caption = 'IN-0,0kB    OUT-0,0kB'
       ImageIndex = 0
-      OnClick = ToolButton1Click
+      OnClick = StartBtnClick
       ParentShowHint = False
       ShowCaption = False
     end
   end
-  object Label1: TLabel
+  object StatusLabel: TLabel
     AnchorSideTop.Control = ToolBar1
     AnchorSideTop.Side = asrBottom
     Cursor = crHandPoint
@@ -63,7 +64,7 @@ object MainForm: TMainForm
     Font.Style = [fsBold]
     ParentFont = False
     Transparent = False
-    OnClick = ToolButton1Click
+    OnClick = StartBtnClick
   end
   object ImageList1: TImageList
     Height = 64

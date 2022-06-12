@@ -16,17 +16,18 @@ msgstr ""
 msgid "WARP"
 msgstr ""
 
-#: tmainform.label1.caption
-msgctxt "tmainform.label1.caption"
-msgid "waiting for connection"
-msgstr "ожидание соединения"
+#: tmainform.startbtn.caption
+msgctxt "tmainform.startbtn.caption"
+msgid "IN-0,0kB    OUT-0,0kB"
+msgstr ""
+
+#: tmainform.statuslabel.caption
+msgctxt "tmainform.statuslabel.caption"
+msgid "waiting for connection..."
+msgstr "ожидание соединения..."
 
 #: tmainform.toolbar1.caption
 msgid "ToolBar1"
-msgstr ""
-
-#: tmainform.toolbutton1.caption
-msgid "IN-0,0kB    OUT-0,0kB"
 msgstr ""
 
 #: unit1.connectionattempt
@@ -54,4 +55,7 @@ msgid ""
 "systemctl enable warp-svc.service\n"
 "systemctl restart warp-svc.service"
 msgstr ""
-
+"warp-svc.service не запущен!\n"
+"\n"
+"systemctl enable warp-svc.service\n"
+"systemctl restart warp-svc.service"

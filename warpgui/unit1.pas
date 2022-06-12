@@ -15,13 +15,13 @@ type
   TMainForm = class(TForm)
     ImageList1: TImageList;
     IniPropStorage1: TIniPropStorage;
-    Label1: TLabel;
+    StatusLabel: TLabel;
     ToolBar1: TToolBar;
-    ToolButton1: TToolButton;
+    StartBtn: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure WarpRegister;
     procedure StartProcess(command: string);
-    procedure ToolButton1Click(Sender: TObject);
+    procedure StartBtnClick(Sender: TObject);
 
   private
 
@@ -117,22 +117,22 @@ begin
   end;
 end;
 
-procedure TMainForm.ToolButton1Click(Sender: TObject);
+procedure TMainForm.StartBtnClick(Sender: TObject);
 begin
   Application.ProcessMessages;
 
   //Если WARP зарегистрирован...
   if Registered then
   begin
-    if ToolButton1.ImageIndex = 0 then
+    if StartBtn.ImageIndex = 0 then
     begin
-      Label1.Caption := ConnectionAttempt;
+      StatusLabel.Caption := ConnectionAttempt;
       StartProcess(
         'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done; warp-cli connect');
     end
     else
     begin
-      Label1.Caption := Disconnection;
+      StatusLabel.Caption := Disconnection;
       StartProcess('while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done');
     end;
   end

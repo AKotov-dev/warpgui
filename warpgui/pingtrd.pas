@@ -53,7 +53,7 @@ begin
         PingStr.LoadFromStream(PingProcess.Output);
         Synchronize(@ShowStatus);
 
-        //TX/RX
+        //Статус IN/OUT
         PingProcess.Parameters.Delete(1);
         PingProcess.Parameters.Add('warp-cli warp-stats | awk ' +
           '''' + 'NR == 3{print$2$4}' + '''');
@@ -76,23 +76,23 @@ begin
   begin
     if Trim(PingStr[0]) = 'yes' then
     begin
-      ToolButton1.ImageIndex := 1;
-      Label1.Color := clGreen;
-      Label1.Caption := ConnectionIsEncrypted;
+      StartBtn.ImageIndex := 1;
+      StatusLabel.Color := clGreen;
+      StatusLabel.Caption := ConnectionIsEncrypted;
     end
     else
     begin
-      ToolButton1.ImageIndex := 0;
-      Label1.Color := clRed;
-      Label1.Caption := WaitingForConnection;
+      StartBtn.ImageIndex := 0;
+      StatusLabel.Color := clRed;
+      StatusLabel.Caption := WaitingForConnection;
     end;
 
-    ToolButton1.Repaint;
-    Label1.Repaint;
+    StartBtn.Repaint;
+    StatusLabel.Repaint;
   end;
 end;
 
-//Вывод TX/RX (отправлено/принято)
+//Вывод IN/OUT (принято/отправлено)
 procedure CheckPing.ShowUpDown;
 begin
   if Trim(PingStr.Text) <> '' then
@@ -102,7 +102,7 @@ begin
     PingStr.StrictDelimiter := True;
     PingStr.DelimitedText := PingStr[0];
 
-    MainForm.ToolButton1.Caption :=
+    MainForm.StartBtn.Caption :=
       Concat('IN-', PingStr[1], '    ', 'OUT-', PingStr[0]);
   end;
 end;

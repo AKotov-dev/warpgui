@@ -5,17 +5,18 @@ msgstr "Content-Type: text/plain; charset=UTF-8"
 msgid "WARP"
 msgstr ""
 
-#: tmainform.label1.caption
-msgctxt "tmainform.label1.caption"
-msgid "waiting for connection"
+#: tmainform.startbtn.caption
+msgctxt "tmainform.startbtn.caption"
+msgid "IN-0,0kB    OUT-0,0kB"
+msgstr ""
+
+#: tmainform.statuslabel.caption
+msgctxt "tmainform.statuslabel.caption"
+msgid "waiting for connection..."
 msgstr ""
 
 #: tmainform.toolbar1.caption
 msgid "ToolBar1"
-msgstr ""
-
-#: tmainform.toolbutton1.caption
-msgid "IN-0,0kB    OUT-0,0kB"
 msgstr ""
 
 #: unit1.connectionattempt
