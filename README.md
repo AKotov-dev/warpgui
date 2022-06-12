@@ -1,7 +1,11 @@
 # warpgui
-GUI for Cloudflare WARP
-
-**Dependencies:** fping expect nftables
+GUI for Cloudflare WARP  
+  
++ Automatic registration with the WARP API
++ Automatic check of warp-svc.service status
++ Sent/Received (IN/OUT) connection indicator
+  
+**Dependencies:** expect nftables (fping - v0.1 only)
 
 Cloudflare (Linux desktop client): https://developers.cloudflare.com/warp-client/get-started/linux/
 
