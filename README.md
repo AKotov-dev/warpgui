@@ -5,7 +5,7 @@ GUI for Cloudflare WARP
 + Automatic check of warp-svc.service status
 + Sent/Received (IN/OUT) connection indicator
   
-**Dependencies:** expect nftables (fping - v0.1 only)
+**Dependencies:** expect nftables
 
 Cloudflare (Linux desktop client): https://developers.cloudflare.com/warp-client/get-started/linux/
 
