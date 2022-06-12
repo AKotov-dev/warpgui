@@ -73,8 +73,6 @@ begin
     if S[0] <> 'active' then
     begin
       MessageDlg(WarpSVCStatus, mtWarning, [mbOK], 0);
-      S.Free;
-    ExProcess.Free;
       Application.Terminate;
     end;
 

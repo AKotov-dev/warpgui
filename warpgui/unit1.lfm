@@ -27,6 +27,7 @@ object MainForm: TMainForm
     EdgeOuter = esNone
     Font.Height = -13
     Font.Name = 'Sans'
+    HotImages = ImageList1
     Images = ImageList1
     ParentFont = False
     ShowCaptions = True
