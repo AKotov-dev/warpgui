@@ -2,7 +2,7 @@
 name=warpgui
 
 [VERSION]
-version=0.2
+version=0.3
 
 [RELEASE]
 release=0.mrx9
@@ -121,8 +121,11 @@ toolversion=2.2.0
 5=/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare packages:
 6=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
 7=
-8=v0.2
-9=+ in/out traffic indicator
-10=+ automatic check of warp-svc status (main service)
-11=+ the "fping" dependency is excluded from the rpm package
-12=+ improved installation of warp-svc.service in rpm-package (spec)
+8=v0.3
+9=+ WARP 2022.5.346
+10=
+11=v0.2
+12=+ in/out traffic indicator
+13=+ automatic check of warp-svc status (main service)
+14=+ the "fping" dependency is excluded from the rpm package
+15=+ improved installation of warp-svc.service in rpm-package (spec)

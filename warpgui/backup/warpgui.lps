@@ -60,6 +60,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingTRD"/>
         <EditorIndex Value="1"/>
+        <TopLine Value="63"/>
         <CursorPos X="25" Y="95"/>
         <UsageCount Value="30"/>
         <Loaded Value="True"/>
