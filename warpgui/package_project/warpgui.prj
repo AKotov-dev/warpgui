@@ -27,7 +27,7 @@ maintainer=Alex Kotov
 vendor=alex_q_2000 (C) 2022
 
 [SUMMARY]
-summary=Clouflare ™ WARP GUI
+summary=GUI for Cloudflare ™ WARP
 
 [URLCOPY]
 urlcopy=https://pkg.cloudflareclient.com/packages/cloudflare-warp
@@ -122,8 +122,8 @@ toolversion=2.2.0
 6=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
 7=
 8=v0.4
-9=+ Displaying the installed version of WARP in the hint
-10=+ Insert ™ ; Cloudflare Trademark Guidelines: https://www.cloudflare.com/trademark/ (spec, warpgui.desktop, repack.txt)
+9=+ Displaying the installed version of Cloudflare ™ WARP in the hint
+10=+ Insert ™; Cloudflare Trademark Guidelines: https://www.cloudflare.com/trademark/ (warpgui.spec, warpgui.desktop, repack.txt)
 11=+ Fixed /etc/systemd/system/warp-svc.service: deleting /etc/sysconfig/network-scripts/ifcfg-CloudflareWARP before restarting and shutting down the computer
 12=
 13=v0.3
