@@ -42,6 +42,7 @@ object MainForm: TMainForm
       OnClick = StartBtnClick
       ParentShowHint = False
       ShowCaption = False
+      ShowHint = True
     end
   end
   object StatusLabel: TLabel
@@ -56,7 +57,7 @@ object MainForm: TMainForm
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Bottom = 2
-    Caption = 'waiting for connection'
+    Caption = 'waiting for connection...'
     Color = clRed
     Font.Color = clWhite
     Font.Height = -13

@@ -91,6 +91,14 @@ begin
     else
       Registered := False;
 
+    //3. Показать версию WARP
+    ExProcess.Parameters.Delete(1);
+    ExProcess.Parameters.Add('warp-cli --version');
+    ExProcess.Execute;
+
+    S.LoadFromStream(ExProcess.Output);
+    StartBtn.Hint := S[0];
+
   finally
     S.Free;
     ExProcess.Free;

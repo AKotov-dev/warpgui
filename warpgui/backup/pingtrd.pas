@@ -53,7 +53,7 @@ begin
         PingStr.LoadFromStream(PingProcess.Output);
         Synchronize(@ShowStatus);
 
-        //TX/RX
+        //Статус IN/OUT
         PingProcess.Parameters.Delete(1);
         PingProcess.Parameters.Add('warp-cli warp-stats | awk ' +
           '''' + 'NR == 3{print$2$4}' + '''');
@@ -92,7 +92,7 @@ begin
   end;
 end;
 
-//Вывод TX/RX (отправлено/принято)
+//Вывод IN/OUT (принято/отправлено)
 procedure CheckPing.ShowUpDown;
 begin
   if Trim(PingStr.Text) <> '' then
@@ -105,6 +105,9 @@ begin
     MainForm.StartBtn.Caption :=
       Concat('IN-', PingStr[1], '    ', 'OUT-', PingStr[0]);
   end;
+
+ //   MainForm.StartBtn.Refresh;
+ //   MainForm.StatusLabel.Refresh;
 end;
 
 end.

@@ -1,0 +1,19 @@
+[Unit]
+Description=Cloudflare Zero Trust Client Daemon
+After=pre-network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/warp-svc
+#Remove the interface (cleaning before reboot)
+ExecStop=/bin/rm -f /etc/sysconfig/network-scripts/ifcfg-CloudflareWARP
+DynamicUser=no
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_SYS_PTRACE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_SYS_PTRACE
+StateDirectory=cloudflare-warp
+RuntimeDirectory=cloudflare-warp
+LogsDirectory=cloudflare-warp
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

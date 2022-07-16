@@ -42,6 +42,7 @@ object MainForm: TMainForm
       OnClick = StartBtnClick
       ParentShowHint = False
       ShowCaption = False
+      ShowHint = True
     end
   end
   object StatusLabel: TLabel
