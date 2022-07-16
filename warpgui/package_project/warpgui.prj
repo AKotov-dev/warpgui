@@ -27,7 +27,7 @@ maintainer=Alex Kotov
 vendor=alex_q_2000 (C) 2022
 
 [SUMMARY]
-summary=GUI for Cloudflare ™ WARP
+summary=GUI for Cloudflare (R) WARP
 
 [URLCOPY]
 urlcopy=https://pkg.cloudflareclient.com/packages/cloudflare-warp
