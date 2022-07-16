@@ -16,7 +16,7 @@ group=Applications/Internet
 2=
 3=Since there are no cloudflare-warp packages for Mageia, warpgui packages already contain
 4=/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare ™ packages:
-5=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
+5=https://pkg.cloudflareclient.com/packages/cloudflare-warp
 6=---
 7=More information: /usr/share/doc/package_name/repack.txt
 
