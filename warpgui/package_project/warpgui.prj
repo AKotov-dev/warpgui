@@ -5,7 +5,7 @@ name=warpgui
 version=0.4
 
 [RELEASE]
-release=0.mrx9
+release=1.mrx9
 
 [GROUP]
 group=Applications/Internet
