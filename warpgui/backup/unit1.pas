@@ -97,7 +97,7 @@ begin
     ExProcess.Execute;
 
     S.LoadFromStream(ExProcess.Output);
-    StartBtn.Hint := S[0];
+    StartBtn.Hint := Trim(S[0]);
 
   finally
     S.Free;
@@ -141,7 +141,8 @@ begin
     else
     begin
       StatusLabel.Caption := Disconnection;
-      StartProcess('while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done');
+      StartProcess('while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done; ' +
+      'rm -f /etc/sysconfig/');
     end;
   end
   else

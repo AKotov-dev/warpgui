@@ -16,8 +16,8 @@ uses
 begin
   RequireDerivedFormResource := True;
   Application.HintHidePause := 1000;
-  Application.Title := 'warpgui-v0.4';
-  Application.Scaled := True;
+  Application.Title:='warpgui-v0.4-1';
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
