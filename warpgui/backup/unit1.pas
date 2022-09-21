@@ -44,7 +44,7 @@ var
 
 implementation
 
-uses PingTRD;
+uses PingTRD, Update_TRD;
 
 {$R *.lfm}
 
@@ -63,7 +63,7 @@ begin
   try
     ExProcess.Executable := '/bin/bash';
     ExProcess.Parameters.Add('-c');
-    ExProcess.Options := ExProcess.Options + [poUsePipes];  //poWaitOnExit,
+    ExProcess.Options := [poUsePipes];
 
     //1. Проверка статуса warp-svc.service
     ExProcess.Parameters.Add('systemctl is-active warp-svc.service');
@@ -91,14 +91,6 @@ begin
     else
       Registered := False;
 
-    //3. Показать версию WARP
-    ExProcess.Parameters.Delete(1);
-    ExProcess.Parameters.Add('warp-cli --version');
-    ExProcess.Execute;
-
-    S.LoadFromStream(ExProcess.Output);
-    StartBtn.Hint := Trim(S[0]);
-
   finally
     S.Free;
     ExProcess.Free;
@@ -110,13 +102,11 @@ procedure TMainForm.StartProcess(command: string);
 var
   ExProcess: TProcess;
 begin
-  //  Application.ProcessMessages;
   ExProcess := TProcess.Create(nil);
   try
     ExProcess.Executable := '/bin/bash';
     ExProcess.Parameters.Add('-c');
     ExProcess.Parameters.Add(command);
-    //ExProcess.Options := ExProcess.Options + [poWaitOnExit, poUsePipes];
 
     ExProcess.Execute;
 
@@ -141,8 +131,7 @@ begin
     else
     begin
       StatusLabel.Caption := Disconnection;
-      StartProcess('while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done; ' +
-      'rm -f /etc/sysconfig/');
+      StartProcess('while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done');
     end;
   end
   else
@@ -152,7 +141,7 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 var
-  FCheckPingThread: TThread;
+  FCheckPingThread, FUpdateThread: TThread;
 begin
   MainForm.Caption := Application.Title;
 
@@ -164,6 +153,10 @@ begin
   //Поток проверки пинга
   FCheckPingThread := CheckPing.Create(False);
   FCheckPingThread.Priority := tpNormal;
+
+  //Поток проверки обновлений WARP
+  FUpdateThread := CheckUpdate.Create(False);
+  FUpdateThread.Priority := tpNormal;
 end;
 
 end.

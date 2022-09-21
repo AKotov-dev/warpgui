@@ -9,14 +9,14 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms,
   Unit1,
-  PingTRD { you can add units after this };
+  PingTRD, update_trd { you can add units after this };
 
 {$R *.res}
 
 begin
   RequireDerivedFormResource := True;
   Application.HintHidePause := 1000;
-  Application.Title:='warpgui-v0.4-1';
+  Application.Title:='warpgui-v0.5';
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);

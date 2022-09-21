@@ -2,10 +2,10 @@
 name=warpgui
 
 [VERSION]
-version=0.4
+version=0.5
 
 [RELEASE]
-release=1.mrx9
+release=0.mrx9
 
 [GROUP]
 group=Applications/Internet
@@ -36,7 +36,7 @@ urlcopy=https://pkg.cloudflareclient.com/packages/cloudflare-warp
 license=GPLv3
 
 [DEPS]
-deps=expect nftables
+deps=expect nftables zenity p7zip fping curl
 
 [META]
 meta=0
@@ -58,6 +58,8 @@ deb=0
 4=/usr/bin/warp-cli
 5=/usr/bin/warp-svc
 6=/etc/systemd/system/warp-svc.service
+7=/usr/bin/warp-update
+8=/etc/systemd/user/warp-update.service
 
 [AFTERINSTALL]
 0=#Первая установка
@@ -121,19 +123,23 @@ toolversion=2.2.0
 5=/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare packages:
 6=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
 7=
-8=v0.4-1
-9=+ WARP 2022.7.472
-10=
-11=v0.4
-12=+ Displaying the installed version of Cloudflare ™ WARP in the hint
-13=+ Insert ™; Cloudflare Trademark Guidelines: https://www.cloudflare.com/trademark/ (warpgui.spec, warpgui.desktop, repack.txt)
-14=+ Fixed /etc/systemd/system/warp-svc.service: deleting /etc/sysconfig/network-scripts/ifcfg-CloudflareWARP before restarting and shutting down the computer
-15=
-16=v0.3
-17=+ WARP 2022.5.346
-18=
-19=v0.2
-20=+ in/out traffic indicator
-21=+ automatic check of warp-svc status (main service)
-22=+ the "fping" dependency is excluded from the rpm package
-23=+ improved installation of warp-svc.service in rpm-package (spec)
+8=v0.5
+9=+ Automatic update of WARP to the latest version
+10=+ Added service /etc/systemd/user/warp-update.service
+11=
+12=v0.4-1
+13=+ WARP 2022.7.472
+14=
+15=v0.4
+16=+ Displaying the installed version of Cloudflare ™ WARP in the hint
+17=+ Insert ™; Cloudflare Trademark Guidelines: https://www.cloudflare.com/trademark/ (warpgui.spec, warpgui.desktop, repack.txt)
+18=+ Fixed /etc/systemd/system/warp-svc.service: deleting /etc/sysconfig/network-scripts/ifcfg-CloudflareWARP before restarting and shutting down the computer
+19=
+20=v0.3
+21=+ WARP 2022.5.346
+22=
+23=v0.2
+24=+ in/out traffic indicator
+25=+ automatic check of warp-svc status (main service)
+26=+ the "fping" dependency is excluded from the rpm package
+27=+ improved installation of warp-svc.service in rpm-package (spec)
