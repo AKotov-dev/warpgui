@@ -85,6 +85,9 @@ begin
       StartBtn.ImageIndex := 0;
       StatusLabel.Color := clRed;
       StatusLabel.Caption := WaitingForConnection;
+
+      //Освобождение сети, если WARP заблокирован снаружи
+      StartProcess('[[ $(warp-cli status | grep Connect) ]] && warp-cli disconnect');
     end;
 
     StartBtn.Repaint;
@@ -105,9 +108,6 @@ begin
     MainForm.StartBtn.Caption :=
       Concat('IN-', PingStr[1], '    ', 'OUT-', PingStr[0]);
   end;
-
- //   MainForm.StartBtn.Refresh;
- //   MainForm.StatusLabel.Refresh;
 end;
 
 end.

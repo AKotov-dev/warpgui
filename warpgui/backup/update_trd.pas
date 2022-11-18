@@ -39,14 +39,15 @@ begin
     UpdateProcess.Parameters.Add('-c');
     UpdateProcess.Options := [poUsePipes, poWaitOnExit];
 
-    UpdateProcess.Parameters.Add('warp-update');
+    UpdateProcess.Parameters.Add(
+      '[[ $(systemctl is-active warp-update) == active ]] || systemctl --user start warp-update');
 
     //Если регистрация пройдена запустить Update
     if Registered then UpdateProcess.Execute;
 
     //Показать версию WARP
     UpdateProcess.Parameters.Delete(1);
-    UpdateProcess.Parameters.Add('warp-cli --version');
+    UpdateProcess.Parameters.Add('warp-cli --version; echo "F12 - change endpoint"');
     UpdateProcess.Execute;
 
     S.LoadFromStream(UpdateProcess.Output);
@@ -61,7 +62,7 @@ end;
 procedure CheckUpdate.StopUpdate;
 begin
   //Перечитываем версию в подсказке
-  MainForm.StartBtn.Hint := Trim(S[0]);
+  MainForm.StartBtn.Hint := S.Text;
 end;
 
 end.

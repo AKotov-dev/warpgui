@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
-  ExtCtrls, Process, LCLTranslator, DefaultTranslator, IniPropStorage;
+  ExtCtrls, Process, LCLTranslator, DefaultTranslator, IniPropStorage, Menus;
 
 type
 
@@ -19,6 +19,7 @@ type
     ToolBar1: TToolBar;
     StartBtn: TToolButton;
     procedure FormCreate(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure WarpRegister;
     procedure StartProcess(command: string);
     procedure StartBtnClick(Sender: TObject);
@@ -109,7 +110,6 @@ begin
     ExProcess.Parameters.Add(command);
 
     ExProcess.Execute;
-
   finally
     ExProcess.Free;
   end;
@@ -157,6 +157,18 @@ begin
   //Поток проверки обновлений WARP
   FUpdateThread := CheckUpdate.Create(False);
   FUpdateThread.Priority := tpNormal;
+end;
+
+//F12 - смена endpoint
+procedure TMainForm.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
+begin
+  if Key = $7B then
+  begin
+    StartProcess('a="$(warp-cli settings | grep endpoint | cut -f4 -d" " | cut -f1 -d":" | cut -f4 -d".")"; '
+      + '[[ $a == 10 ]] && let a=1 || let a=$a+1; warp-cli set-custom-endpoint 162.159.193.$a:2408');
+
+    StartBtn.Click;
+  end;
 end;
 
 end.

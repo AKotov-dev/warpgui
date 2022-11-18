@@ -47,7 +47,8 @@ begin
 
     //Показать версию WARP
     UpdateProcess.Parameters.Delete(1);
-    UpdateProcess.Parameters.Add('warp-cli --version');
+    UpdateProcess.Parameters.Add('warp-cli --version; echo "F12 - ' +
+      EndPointChange + '"');
     UpdateProcess.Execute;
 
     S.LoadFromStream(UpdateProcess.Output);
@@ -62,7 +63,7 @@ end;
 procedure CheckUpdate.StopUpdate;
 begin
   //Перечитываем версию в подсказке
-  MainForm.StartBtn.Hint := Trim(S[0]);
+  MainForm.StartBtn.Hint := S.Text;
 end;
 
 end.

@@ -32,6 +32,10 @@ msgstr ""
 msgid "disconnection..."
 msgstr ""
 
+#: unit1.endpointchange
+msgid "change endpoint"
+msgstr ""
+
 #: unit1.waitingforconnection
 msgctxt "unit1.waitingforconnection"
 msgid "waiting for connection..."

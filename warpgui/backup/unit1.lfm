@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 314
+  Left = 304
   Height = 117
-  Top = 125
+  Top = 123
   Width = 238
   AlphaBlendValue = 225
   AutoSize = True
@@ -10,7 +10,9 @@ object MainForm: TMainForm
   Caption = 'WARP'
   ClientHeight = 117
   ClientWidth = 238
+  KeyPreview = True
   OnCreate = FormCreate
+  OnKeyUp = FormKeyUp
   SessionProperties = 'Top;Left'
   LCLVersion = '2.2.0.4'
   object ToolBar1: TToolBar
