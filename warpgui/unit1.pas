@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
-  ExtCtrls, Process, LCLTranslator, DefaultTranslator, IniPropStorage, Menus;
+  ExtCtrls, Process, LCLTranslator, DefaultTranslator, IniPropStorage;
 
 type
 
@@ -81,8 +81,9 @@ begin
     //2. Проверка регистрации (warp-cli-register)
     ExProcess.Parameters.Delete(1);
     ExProcess.Parameters.Add(
-      '[[ -n $(grep yes ~/.local/share/warp/accepted-tos.txt) ]] || "' +
-      ExtractFilePath(ParamStr(0)) + 'register.sh"; ' +
+      //'[[ -n $(grep yes ~/.local/share/warp/accepted-tos.txt) ]] || "' +
+
+      '"' + ExtractFilePath(ParamStr(0)) + 'register.sh"; ' +
       'grep yes ~/.local/share/warp/accepted-tos.txt');
 
     ExProcess.Execute;

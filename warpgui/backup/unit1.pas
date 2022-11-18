@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
-  ExtCtrls, Process, LCLTranslator, DefaultTranslator, IniPropStorage, Menus;
+  ExtCtrls, Process, LCLTranslator, DefaultTranslator, IniPropStorage;
 
 type
 
@@ -38,6 +38,7 @@ resourcestring
   WarpSVCStatus = 'warp-svc.service is not running!' + sLineBreak +
     sLineBreak + 'systemctl enable warp-svc.service' + sLineBreak +
     'systemctl restart warp-svc.service';
+  EndPointChange = 'change endpoint';
 
 var
   Registered: boolean; //Флаг регистрации WARP

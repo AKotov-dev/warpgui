@@ -49,8 +49,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <TopLine Value="26"/>
-        <CursorPos X="3" Y="41"/>
+        <TopLine Value="70"/>
+        <CursorPos X="62" Y="86"/>
         <UsageCount Value="34"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -61,7 +61,7 @@
         <UnitName Value="PingTRD"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="46"/>
+        <TopLine Value="70"/>
         <CursorPos X="14" Y="65"/>
         <UsageCount Value="33"/>
         <Loaded Value="True"/>
@@ -71,7 +71,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="34"/>
-        <CursorPos X="70" Y="50"/>
+        <CursorPos X="75" Y="37"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
