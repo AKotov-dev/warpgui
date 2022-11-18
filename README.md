@@ -5,6 +5,7 @@ GUI for Cloudflare ™ WARP
 + Automatic check of warp-svc.service status
 + Sent/Received (IN/OUT) connection indicator
 + Automatic checking of WARP updates when the GUI is launched
++ The `F12` key - emergency endpoint change; one click - new value (10 options)
   
 **Dependencies:** expect nftables zenity p7zip fping curl
 
