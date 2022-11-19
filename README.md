@@ -11,7 +11,7 @@ GUI for Cloudflare ™ WARP
 
 Cloudflare ™ (Linux desktop client): https://developers.cloudflare.com/warp-client/get-started/linux/
 
-Since there are no `cloudflare-warp` package for Mageia (the rpm package for CentOS is installed with an error), `warpgui` package already contain `/usr/bin/warp-cli` and `/usr/bin/warp-svc` from the [original Cloudflare ™ packages](https://pkg.cloudflareclient.com/packages/cloudflare-warp).  
+Since there are no `cloudflare-warp` package for Mageia (the rpm package for CentOS is installed with an error), `warpgui` package already contain `/usr/bin/warp-cli` and `/usr/bin/warp-svc` from the [original Cloudflare ™ packages](https://pkg.cloudflareclient.com/packages/cloudflare-warp). However, starting from v0.7, the download is carried out automatically from the manufacturer's website.  
 ![](https://github.com/AKotov-dev/warpgui/blob/main/ScreenShots/warpgui-11.png) ![](https://github.com/AKotov-dev/warpgui/blob/main/ScreenShots/warpgui-12.png)  
 Tested in Mageia-8/9 (without the cloudflare-warp package) and LUbuntu-22.04 (portable, without auto update). In LUbuntu `warpgui` can work without installation, but with the original `cloudflare-warp` package installed.  
   
