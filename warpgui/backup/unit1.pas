@@ -72,17 +72,15 @@ begin
     ExProcess.Execute;
     S.LoadFromStream(ExProcess.Output);
 
-    if S[0] <> 'active' then
+    if (S[0] <> 'active') and (FileExists('/usr/bin/warp-svc')) then
     begin
       MessageDlg(WarpSVCStatus, mtWarning, [mbOK], 0);
       Application.Terminate;
     end;
 
-    //2. Проверка регистрации (warp-cli-register)
+    //2. Запуск/Проверка регистрации через expect; если уже зарегистрирован - запроса не будет
     ExProcess.Parameters.Delete(1);
     ExProcess.Parameters.Add(
-      //'[[ -n $(grep yes ~/.local/share/warp/accepted-tos.txt) ]] || "' +
-
       '"' + ExtractFilePath(ParamStr(0)) + 'register.sh"; ' +
       'grep yes ~/.local/share/warp/accepted-tos.txt');
 
@@ -167,7 +165,7 @@ begin
   if Key = $7B then
   begin
     //Отключить, если подключено
-    if StatusLabel.Color = clGreen then StartBtn.Click;
+  //  if StatusLabel.Color = clGreen then StartBtn.Click;
 
   {  StartProcess('a="$(warp-cli settings | grep endpoint | cut -f4 -d" " | cut -f1 -d":" | cut -f4 -d".")"; '
       + '[[ $a == 10 ]] && let a=1 || let a=$a+1; warp-cli set-custom-endpoint 162.159.193.$a:2408'); }
@@ -176,7 +174,7 @@ begin
       'arr=("500" "4500" "2408"); rand=$[$RANDOM % ${#arr[@]}]; ' +
       'warp-cli set-custom-endpoint 162.159.19$((2 + $RANDOM %2)).$((1 + $RANDOM %10)):${arr[$rand]}');
 
-    StartBtn.Click;
+    if StatusLabel.Color = clRed then StartBtn.Click;
   end;
 end;
 

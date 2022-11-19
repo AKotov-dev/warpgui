@@ -43,11 +43,14 @@ begin
       '[[ $(systemctl is-active warp-update) == active ]] || systemctl --user start warp-update');
 
     //Если регистрация пройдена запустить Update
-    if Registered then UpdateProcess.Execute;
+    //if Registered then UpdateProcess.Execute;
+
+    UpdateProcess.Execute;
 
     //Показать версию WARP
     UpdateProcess.Parameters.Delete(1);
-    UpdateProcess.Parameters.Add('warp-cli --version; echo "F12 - change endpoint"');
+    UpdateProcess.Parameters.Add('warp-cli --version; echo "F12 - ' +
+      EndPointChange + '"');
     UpdateProcess.Execute;
 
     S.LoadFromStream(UpdateProcess.Output);

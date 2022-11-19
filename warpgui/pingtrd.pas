@@ -28,6 +28,7 @@ uses unit1;
 
 { TRD }
 
+//Контроль статуса
 procedure CheckPing.Execute;
 var
   PingProcess: TProcess;

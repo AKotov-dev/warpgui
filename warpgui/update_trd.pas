@@ -26,6 +26,7 @@ uses unit1;
 
 { TRD }
 
+//Загрузка/Обновление WARP
 procedure CheckUpdate.Execute;
 var
   UpdateProcess: TProcess;
@@ -42,8 +43,8 @@ begin
     UpdateProcess.Parameters.Add(
       '[[ $(systemctl is-active warp-update) == active ]] || systemctl --user start warp-update');
 
-    //Если регистрация пройдена запустить Update
-    if Registered then UpdateProcess.Execute;
+    //Запуск Загрузки/Обновления
+    UpdateProcess.Execute;
 
     //Показать версию WARP
     UpdateProcess.Parameters.Delete(1);
