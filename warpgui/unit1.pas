@@ -162,7 +162,7 @@ end;
 //F12 - Генерация endpoint: 162.159.19(2,3).(1-10):(2048,500,4500)
 procedure TMainForm.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
 begin
-  //Влючить, если отключено
+  //Отключить, если включено
   if StatusLabel.Color = clGreen then StartBtn.Click;
 
   if Key = $7B then
