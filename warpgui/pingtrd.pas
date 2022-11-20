@@ -63,7 +63,7 @@ begin
         Synchronize(@ShowUpDown);
       end;
 
-      Sleep(3000);
+      Sleep(1000);
     finally
       PingStr.Free;
       PingProcess.Free;
