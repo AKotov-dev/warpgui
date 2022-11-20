@@ -162,11 +162,11 @@ end;
 //F12 - Генерация endpoint: 162.159.19(2,3).(1-10):(2048,500,4500)
 procedure TMainForm.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
 begin
-  //Влючить, если отключено
-  if StatusLabel.Color = clGreen then StartBtn.Click;
-
   if Key = $7B then
   begin
+    //Отключить, если подключено
+  //  if StatusLabel.Color = clGreen then StartBtn.Click;
+
   {  StartProcess('a="$(warp-cli settings | grep endpoint | cut -f4 -d" " | cut -f1 -d":" | cut -f4 -d".")"; '
       + '[[ $a == 10 ]] && let a=1 || let a=$a+1; warp-cli set-custom-endpoint 162.159.193.$a:2408'); }
 
@@ -174,7 +174,6 @@ begin
       'arr=("500" "4500" "2408"); rand=$[$RANDOM % ${#arr[@]}]; ' +
       'warp-cli set-custom-endpoint 162.159.19$((2 + $RANDOM %2)).$((1 + $RANDOM %10)):${arr[$rand]}');
 
-    //Влючить, если отключено
     if StatusLabel.Color = clRed then StartBtn.Click;
   end;
 end;

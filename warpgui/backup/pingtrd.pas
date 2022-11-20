@@ -28,7 +28,6 @@ uses unit1;
 
 { TRD }
 
-//Контроль статуса
 procedure CheckPing.Execute;
 var
   PingProcess: TProcess;
@@ -63,7 +62,7 @@ begin
         Synchronize(@ShowUpDown);
       end;
 
-      Sleep(2000);
+      Sleep(3000);
     finally
       PingStr.Free;
       PingProcess.Free;
