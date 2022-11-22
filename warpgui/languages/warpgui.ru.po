@@ -44,7 +44,9 @@ msgid "disconnection..."
 msgstr "отключение..."
 
 #: unit1.endpointchange
-msgid "change endpoint"
+#, fuzzy
+#| msgid "change endpoint"
+msgid "replacing endpoint..."
 msgstr "изменить endpoint"
 
 #: unit1.waitingforconnection
@@ -53,11 +55,13 @@ msgid "waiting for connection..."
 msgstr "ожидание соединения..."
 
 #: unit1.warpsvcstatus
-msgid "warp-svc.service is not running!\n"
+msgid ""
+"warp-svc.service is not running!\n"
 "\n"
 "systemctl enable warp-svc.service\n"
 "systemctl restart warp-svc.service"
-msgstr "warp-svc.service не запущен!\n"
+msgstr ""
+"warp-svc.service не запущен!\n"
 "\n"
 "systemctl enable warp-svc.service\n"
 "systemctl restart warp-svc.service"

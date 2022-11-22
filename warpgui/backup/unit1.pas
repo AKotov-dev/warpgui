@@ -43,10 +43,11 @@ resourcestring
 var
   Registered: boolean; //Флаг регистрации WARP
   MainForm: TMainForm;
+  StartChangeEndpoint: boolean; //Флаг окончания смены EndPoint [F12]
 
 implementation
 
-uses PingTRD, Update_TRD;
+uses PingTRD, Update_TRD, Change_Endpoint_TRD;
 
 {$R *.lfm}
 
@@ -159,23 +160,21 @@ begin
   FUpdateThread.Priority := tpNormal;
 end;
 
-//F12 - Генерация endpoint: 162.159.19(2,3).(1-10):(2048,500,4500)
+//[F12] - Генерация endpoint: 162.159.19(2,3).(1-10):(2048,500,4500)
 procedure TMainForm.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
+var
+  FChangeEndpointThread: TThread;
 begin
-  if Key = $7B then
+  if (Key = $7B) and (StartChangeEndpoint = False) then
   begin
-    //Отключить, если подключено
-  //  if StatusLabel.Color = clGreen then StartBtn.Click;
+    if StatusLabel.Color = clGreen then
+      StartBtn.Click;
 
-  {  StartProcess('a="$(warp-cli settings | grep endpoint | cut -f4 -d" " | cut -f1 -d":" | cut -f4 -d".")"; '
-      + '[[ $a == 10 ]] && let a=1 || let a=$a+1; warp-cli set-custom-endpoint 162.159.193.$a:2408'); }
-
-    StartProcess(
-      'arr=("500" "4500" "2408"); rand=$[$RANDOM % ${#arr[@]}]; ' +
-      'warp-cli set-custom-endpoint 162.159.19$((2 + $RANDOM %2)).$((1 + $RANDOM %10)):${arr[$rand]}');
-
-    if StatusLabel.Color = clRed then StartBtn.Click;
+    //Поток проверки обновлений WARP
+    FChangeEndpointThread := ChangeEndpoint.Create(False);
+    FChangeEndpointThread.Priority := tpNormal;
   end;
+
 end;
 
 end.

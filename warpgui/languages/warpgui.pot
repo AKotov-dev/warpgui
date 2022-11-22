@@ -33,7 +33,7 @@ msgid "disconnection..."
 msgstr ""
 
 #: unit1.endpointchange
-msgid "change endpoint"
+msgid "replacing endpoint..."
 msgstr ""
 
 #: unit1.waitingforconnection
