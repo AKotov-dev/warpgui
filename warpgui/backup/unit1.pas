@@ -39,6 +39,7 @@ resourcestring
     sLineBreak + 'systemctl enable warp-svc.service' + sLineBreak +
     'systemctl restart warp-svc.service';
   EndPointChange = 'replacing endpoint...';
+  ResetWarpMsg = 'reset settings...';
 
 var
   Registered: boolean; //Флаг регистрации WARP
@@ -47,7 +48,7 @@ var
 
 implementation
 
-uses PingTRD, Update_TRD, Change_Endpoint_TRD;
+uses PingTRD, Update_TRD, Change_Endpoint_TRD, ResetTRD;
 
 {$R *.lfm}
 
@@ -163,8 +164,17 @@ end;
 //[F12] - Генерация endpoint: 162.159.19(2,3).(1-10):(2048,500,4500)
 procedure TMainForm.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
 var
-  FChangeEndpointThread: TThread;
+  FChangeEndpointThread, FResetWarpThread: TThread;
 begin
+  //Сброс настроек WARP
+  if (Key = $7A) and (StartChangeEndpoint = False) then
+  begin
+      //Поток сброса настроек WARP
+      FResetWarpThread := ResetWarp.Create(False);
+      FResetWarpThread.Priority := tpNormal;
+  end;
+
+  //Замена endpoint
   if (Key = $7B) and (StartChangeEndpoint = False) then
   begin
     if StatusLabel.Color = clGreen then
@@ -174,7 +184,6 @@ begin
     FChangeEndpointThread := ChangeEndpoint.Create(False);
     FChangeEndpointThread.Priority := tpNormal;
   end;
-
 end;
 
 end.

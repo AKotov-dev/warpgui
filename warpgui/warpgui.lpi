@@ -97,6 +97,11 @@
         <Filename Value="change_endpoint_trd.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="resettrd.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ResetTRD"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

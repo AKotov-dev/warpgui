@@ -48,8 +48,8 @@ begin
 
     //Показать версию WARP
     UpdateProcess.Parameters.Delete(1);
-    UpdateProcess.Parameters.Add('warp-cli --version; echo "F12 - ' +
-      EndPointChange + '"');
+    UpdateProcess.Parameters.Add('warp-cli --version; echo -e "---\nF11 - ' +
+      ResetWarpMsg + '\nF12 - ' + EndPointChange + '"');
     UpdateProcess.Execute;
 
     S.LoadFromStream(UpdateProcess.Output);

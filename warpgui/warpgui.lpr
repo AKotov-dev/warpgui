@@ -9,13 +9,12 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms,
   Unit1,
-  PingTRD, change_endpoint_trd;
+  PingTRD, change_endpoint_trd, ResetTRD;
 
 {$R *.res}
 
 begin
   RequireDerivedFormResource := True;
-  Application.HintHidePause := 1000;
   Application.Title:='warpgui-v0.8';
   Application.Scaled:=True;
   Application.Initialize;

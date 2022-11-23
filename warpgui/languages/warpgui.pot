@@ -33,7 +33,11 @@ msgid "disconnection..."
 msgstr ""
 
 #: unit1.endpointchange
-msgid "replacing endpoint..."
+msgid "replacing endpoint"
+msgstr ""
+
+#: unit1.resetwarpmsg
+msgid "reset settings"
 msgstr ""
 
 #: unit1.waitingforconnection

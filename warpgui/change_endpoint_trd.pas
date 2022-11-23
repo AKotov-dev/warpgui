@@ -33,7 +33,7 @@ var
 begin
   FreeOnTerminate := True; //Уничтожать по завершении
   try
-    //Флаг запуска смены EndPoint
+    //Флаг запуска смены EndPoint/ResetWarp
     StartChangeEndpoint := True;
 
     Synchronize(@StartChange);
@@ -64,7 +64,7 @@ end;
 //---Статус смены EndPoint---
 procedure ChangeEndpoint.StartChange;
 begin
-  MainForm.Caption := EndPointChange;
+  MainForm.Caption := EndPointChange + '...';
 end;
 
 procedure ChangeEndpoint.StopChange;
