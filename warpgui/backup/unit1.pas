@@ -38,7 +38,7 @@ resourcestring
   WarpSVCStatus = 'warp-svc.service is not running!' + sLineBreak +
     sLineBreak + 'systemctl enable warp-svc.service' + sLineBreak +
     'systemctl restart warp-svc.service';
-  EndPointChange = 'change endpoint';
+  EndPointChange = 'replacing endpoint...';
 
 var
   Registered: boolean; //Флаг регистрации WARP

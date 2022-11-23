@@ -63,7 +63,7 @@ begin
         Synchronize(@ShowUpDown);
       end;
 
-      Sleep(500);
+      Sleep(1000);
     finally
       PingStr.Free;
       PingProcess.Free;
@@ -87,8 +87,9 @@ begin
       StatusLabel.Color := clRed;
       StatusLabel.Caption := WaitingForConnection;
 
-      //Освобождение сети, если WARP заблокирован снаружи
-      StartProcess('[[ $(warp-cli status | grep Connect) ]] && warp-cli disconnect');
+      //Освобождение сети, если WARP заблокирован снаружи и нет флага спены EndPoint
+      if not StartChangeEndpoint then
+        StartProcess('[[ $(warp-cli status | grep Connect) ]] && warp-cli disconnect');
     end;
 
     StartBtn.Repaint;
