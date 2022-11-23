@@ -50,7 +50,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <TopLine Value="58"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="67"/>
         <CursorPos X="56" Y="87"/>
         <UsageCount Value="42"/>
         <Loaded Value="True"/>
@@ -88,7 +89,6 @@
         <Filename Value="resettrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResetTRD"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="35"/>
         <CursorPos X="33" Y="47"/>
