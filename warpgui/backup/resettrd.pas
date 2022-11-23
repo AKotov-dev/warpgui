@@ -44,8 +44,7 @@ begin
     ResetProcess.Options := [poWaitOnExit];
 
     //Сброс настроек WARP
-    ResetProcess.Parameters.Add('warp-cli disconnect; warp-cli reset-settings; exec ' +
-      ExtractFilePath(ParamStr(0)) + 'register.sh; warp-cli connect');
+    ResetProcess.Parameters.Add('warp-cli disconnect; warp-cli reset-settings');
 
     ResetProcess.Execute;
 
