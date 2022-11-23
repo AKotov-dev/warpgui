@@ -64,7 +64,7 @@ end;
 //---Статус смены EndPoint---
 procedure ChangeEndpoint.StartChange;
 begin
-  MainForm.Caption := EndPointChange;
+  MainForm.Caption := EndPointChange + '...';
 end;
 
 procedure ChangeEndpoint.StopChange;
