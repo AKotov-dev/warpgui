@@ -5,7 +5,7 @@ unit ResetTRD;
 interface
 
 uses
-  Classes, Forms, Controls, SysUtils, Process, Graphics;
+  Classes, Forms, Controls, SysUtils, Process;
 
 type
   ResetWarp = class(TThread)

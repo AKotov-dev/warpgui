@@ -148,6 +148,9 @@ var
 begin
   MainForm.Caption := Application.Title;
 
+  //Инициализация флага одиночного нажатия F11/F12
+  StartChangeEndpoint:=False;
+
   //Проверка регистрации/регистрация WARP (Registered=False/True)
   WarpRegister;
 
@@ -175,7 +178,7 @@ begin
     FResetWarpThread.Priority := tpNormal;
   end;
 
-  //Замена endpoint
+  //Замена EndPoint
   if (Key = $7B) and (StartChangeEndpoint = False) then
   begin
     if StatusLabel.Color = clGreen then

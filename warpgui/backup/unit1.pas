@@ -83,7 +83,8 @@ begin
     //2. Запуск/Проверка регистрации через expect; если уже зарегистрирован - запроса не будет
     ExProcess.Parameters.Delete(1);
     ExProcess.Parameters.Add(
-      '"' + ExtractFilePath(ParamStr(0)) + 'register.sh"; ' +
+      '[[ -n $(grep yes ~/.local/share/warp/accepted-tos.txt) ]] || "' +
+      ExtractFilePath(ParamStr(0)) + 'register.sh"; ' +
       'grep yes ~/.local/share/warp/accepted-tos.txt');
 
     ExProcess.Execute;
@@ -147,6 +148,9 @@ var
 begin
   MainForm.Caption := Application.Title;
 
+  //Инициализация флага одиночного нажатия F11/F12
+  StartChangeEndpoint:=False;
+
   //Проверка регистрации/регистрация WARP (Registered=False/True)
   WarpRegister;
 
@@ -169,9 +173,9 @@ begin
   //Сброс настроек WARP
   if (Key = $7A) and (StartChangeEndpoint = False) then
   begin
-      //Поток сброса настроек WARP
-      FResetWarpThread := ResetWarp.Create(False);
-      FResetWarpThread.Priority := tpNormal;
+    //Поток сброса настроек WARP
+    FResetWarpThread := ResetWarp.Create(False);
+    FResetWarpThread.Priority := tpNormal;
   end;
 
   //Замена endpoint
