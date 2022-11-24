@@ -17,7 +17,7 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.HintPause := 1000;
+  Application.HintPause := 500;
   Application.HintHidePause := 3000;
   Application.HintHidePausePerChar := 0;
   Application.Title := 'warpgui-v1.0';

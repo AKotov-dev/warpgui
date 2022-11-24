@@ -94,7 +94,7 @@ deb=0
 url32=https://github.com/AKotov-dev/warpgui
 
 [URL64]
-url64=https://github.com/AKotov-dev/warpgui
+url64=
 
 [PROGRAMNAME]
 programname=warpgui
@@ -115,8 +115,8 @@ toolversion=2.2.0
 6=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
 7=
 8=v1.0
-9=+ Improved the process of switching endpoints
-10=+
+9=+ Optimization of hints show speed
+10=+ Improved the process of switching endpoints [F12]
 11=
 12=v0.9
 13=+ The registration process has been fixed
