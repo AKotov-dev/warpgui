@@ -59,9 +59,8 @@
         <Filename Value="pingtrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingTRD"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="70"/>
+        <TopLine Value="85"/>
         <CursorPos X="37" Y="5"/>
         <UsageCount Value="41"/>
         <Loaded Value="True"/>
@@ -69,18 +68,18 @@
       <Unit>
         <Filename Value="update_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="12"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="36"/>
         <CursorPos X="36" Y="15"/>
         <UsageCount Value="31"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="change_endpoint_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="41"/>
-        <CursorPos X="62" Y="54"/>
+        <CursorPos X="105" Y="54"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
@@ -88,13 +87,13 @@
         <Filename Value="resettrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResetTRD"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="4"/>
         <CursorPos X="29" Y="3"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="10">
+    <JumpHistory HistoryIndex="9">
       <Position>
         <Filename Value="resettrd.pas"/>
         <Caret Line="60" Column="7" TopLine="38"/>
@@ -122,10 +121,6 @@
       <Position>
         <Filename Value="resettrd.pas"/>
         <Caret Line="70" Column="20" TopLine="41"/>
-      </Position>
-      <Position>
-        <Filename Value="update_trd.pas"/>
-        <Caret Line="10" Column="22"/>
       </Position>
       <Position>
         <Filename Value="unit1.pas"/>

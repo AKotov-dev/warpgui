@@ -47,10 +47,7 @@ begin
     //warp-cli после одиночного connect сам пытается сделать несколько попыток подключения
     //если неудача или окончание спустя 10 сек флаг StartChangeEndpoint = False, поток PingTRD сбрасывает состояние Connecting
     ChangeProcess.Parameters.Add(
-      'warp-cli disconnect; i=0; while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; ((i++)); [[ $i == 5 ]] && break; done; '
-      + 'arr=("500" "4500" "2408"); rand=$[$RANDOM % ${#arr[@]}]; ' +
-      'warp-cli set-custom-endpoint 162.159.19$((2 + $RANDOM %2)).$((1 + $RANDOM %10)):${arr[$rand]}; '
-      + 'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do warp-cli connect; sleep 1; ((i++)); if [[ $i == 5 ]]; then warp-cli disconnect; break; fi; done');
+      'warp-cli disconnect; i=0; while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; ((i++)); [[ $i == 5 ]] && break; done; ' + 'arr=("500" "4500" "2408"); rand=$[$RANDOM % ${#arr[@]}]; ' + 'warp-cli set-custom-endpoint 162.159.19$((2 + $RANDOM %2)).$((1 + $RANDOM %10)):${arr[$rand]}; ' + 'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do warp-cli connect; sleep 1; ((i++)); if [[ $i == 5 ]]; then warp-cli disconnect; break; fi; done');
 
     ChangeProcess.Execute;
 
