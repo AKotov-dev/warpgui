@@ -5,18 +5,23 @@ program warpgui;
 uses
  {$IFDEF UNIX}
   cthreads,
-     {$ENDIF}
+       {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms,
   Unit1,
-  PingTRD, change_endpoint_trd, ResetTRD;
+  PingTRD,
+  change_endpoint_trd,
+  ResetTRD;
 
 {$R *.res}
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title:='warpgui-v1.0';
-  Application.Scaled:=True;
+  Application.HintPause := 500;
+  Application.HintHidePause := 3000;
+  Application.HintHidePausePerChar := 0;
+  Application.Title := 'warpgui-v1.0';
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;

@@ -178,7 +178,7 @@ begin
     FResetWarpThread.Priority := tpNormal;
   end;
 
-  //Замена endpoint
+  //Замена EndPoint
   if (Key = $7B) and (StartChangeEndpoint = False) then
   begin
     if StatusLabel.Color = clGreen then
