@@ -59,10 +59,9 @@
         <Filename Value="pingtrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingTRD"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="73"/>
-        <CursorPos X="89" Y="92"/>
+        <CursorPos X="36" Y="79"/>
         <UsageCount Value="41"/>
         <Loaded Value="True"/>
       </Unit>
@@ -77,6 +76,7 @@
       <Unit>
         <Filename Value="change_endpoint_trd.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="41"/>
         <CursorPos X="105" Y="54"/>

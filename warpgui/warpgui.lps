@@ -49,7 +49,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <TopLine Value="55"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="5"/>
         <CursorPos X="40" Y="5"/>
         <UsageCount Value="42"/>
         <Loaded Value="True"/>
@@ -59,10 +60,9 @@
         <Filename Value="pingtrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingTRD"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="1"/>
         <TopLine Value="73"/>
-        <CursorPos X="89" Y="92"/>
+        <CursorPos X="36" Y="79"/>
         <UsageCount Value="41"/>
         <Loaded Value="True"/>
       </Unit>
@@ -77,7 +77,7 @@
       <Unit>
         <Filename Value="change_endpoint_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="41"/>
         <CursorPos X="105" Y="54"/>
         <UsageCount Value="25"/>
@@ -88,7 +88,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResetTRD"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="34"/>
+        <TopLine Value="3"/>
         <CursorPos X="29" Y="3"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>

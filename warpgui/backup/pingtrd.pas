@@ -88,8 +88,8 @@ begin
       StatusLabel.Caption := WaitingForConnection;
 
       //Освобождение сети, если WARP заблокирован снаружи и нет флага смены EndPoint
-      {if not StartChangeEndpoint then
-        StartProcess('[[ $(warp-cli status | grep Connect) ]] && warp-cli disconnect');}
+      if not StartChangeEndpoint then
+        StartProcess('[[ $(warp-cli status | grep Connect) ]] && warp-cli disconnect');
     end;
 
     StartBtn.Repaint;
