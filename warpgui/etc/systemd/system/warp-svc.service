@@ -1,10 +1,12 @@
 [Unit]
 Description=Cloudflare Zero Trust Client Daemon
-After=pre-network.target
+#After=pre-network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/bin/warp-svc
+ExecStart=/usr/bin/warp-svc
 #Remove the interface (cleaning before reboot)
 ExecStop=/bin/rm -f /etc/sysconfig/network-scripts/ifcfg-CloudflareWARP
 DynamicUser=no
