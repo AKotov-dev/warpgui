@@ -8,7 +8,7 @@ GUI for Cloudflare ™ WARP
 + The `F11` key - resetting WARP settings to default
 + The `F12` key - emergency `endpoint` change; one click - new value (60 options)
   
-**Dependencies:** nftables zenity p7zip fping curl (expect excluded from v1.1)
+**Dependencies:** nftables zenity p7zip fping curl (`expect` excluded from v1.1)
 
 Cloudflare ™ (Linux desktop client): https://developers.cloudflare.com/warp-client/get-started/linux/
 
