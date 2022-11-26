@@ -5,7 +5,7 @@ unit ResetTRD;
 interface
 
 uses
-  Classes, Forms, Controls, SysUtils, Process, Graphics;
+  Classes, Forms, Controls, SysUtils, Process;
 
 type
   ResetWarp = class(TThread)
@@ -45,7 +45,7 @@ begin
 
     //Сброс настроек WARP
     ResetProcess.Parameters.Add(
-      'warp-cli disconnect; warp-cli reset-settings; rm -f ~/.local/share/warp/accepted-tos.txt');
+      'warp-cli disconnect; warp-cli --accept-tos reset-settings');
 
     ResetProcess.Execute;
 

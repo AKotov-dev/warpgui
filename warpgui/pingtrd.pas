@@ -56,7 +56,7 @@ begin
 
         //Статус IN/OUT
         PingProcess.Parameters.Delete(1);
-        PingProcess.Parameters.Add('warp-cli warp-stats | awk ' +
+        PingProcess.Parameters.Add('warp-cli --accept-tos warp-stats | awk ' +
           '''' + 'NR == 3{print$2$4}' + '''');
         PingProcess.Execute;
         PingStr.LoadFromStream(PingProcess.Output);
@@ -90,7 +90,7 @@ begin
       //Освобождение сети, если WARP заблокирован снаружи и нет флага смены EndPoint
       //или нажат Запуск на плохом endpoint
       if not StartChangeEndpoint then
-        StartProcess('[[ $(warp-cli status | grep Connect) ]] && warp-cli disconnect');
+        StartProcess('[[ $(warp-cli --accept-tos status | grep Connect) ]] && warp-cli disconnect');
     end;
 
     StartBtn.Repaint;

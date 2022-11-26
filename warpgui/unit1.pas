@@ -82,10 +82,15 @@ begin
 
     //2. Запуск/Проверка регистрации через expect; если уже зарегистрирован - запроса не будет
     ExProcess.Parameters.Delete(1);
-    ExProcess.Parameters.Add(
+   { ExProcess.Parameters.Add(
       '[[ -n $(grep yes ~/.local/share/warp/accepted-tos.txt) ]] || "' +
       ExtractFilePath(ParamStr(0)) + 'register.sh"; ' +
       'grep yes ~/.local/share/warp/accepted-tos.txt');
+    }
+    ExProcess.Parameters.Add(
+      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|network|error") ]] && '
+      + 'warp-cli --accept-tos register &> /dev/null; ' +
+      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|network|error") ]] || echo "yes"');
 
     ExProcess.Execute;
 
@@ -129,12 +134,13 @@ begin
     begin
       StatusLabel.Caption := ConnectionAttempt;
       StartProcess(
-        'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done; warp-cli connect');
+        'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli --accept-tos disconnect; sleep 1; done; warp-cli connect');
     end
     else
     begin
       StatusLabel.Caption := Disconnection;
-      StartProcess('while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli disconnect; sleep 1; done');
+      StartProcess(
+        'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli --accept-tos disconnect; sleep 1; done');
     end;
   end
   else
