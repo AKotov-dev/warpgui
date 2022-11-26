@@ -56,7 +56,7 @@ begin
 
         //Статус IN/OUT
         PingProcess.Parameters.Delete(1);
-        PingProcess.Parameters.Add('warp-cli warp-stats | awk ' +
+        PingProcess.Parameters.Add('warp-cli --accept-tos warp-stats | awk ' +
           '''' + 'NR == 3{print$2$4}' + '''');
         PingProcess.Execute;
         PingStr.LoadFromStream(PingProcess.Output);
