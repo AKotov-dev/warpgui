@@ -45,7 +45,7 @@ begin
 
     //Сброс настроек WARP
     ResetProcess.Parameters.Add(
-      'warp-cli disconnect; warp-cli --accept-tos reset-settings');
+      'warp-cli --accept-tos reset-settings');
 
     ResetProcess.Execute;
 
@@ -67,6 +67,7 @@ begin
   with MainForm do
   begin
     WarpRegister;
+    StartProcess('warp-cli --accept-tos connect');
     Caption := Application.Title;
   end;
 end;

@@ -45,8 +45,8 @@ begin
       PingProcess.Parameters.Add('-c');
 
       //Если WARP зарегистрирован...
-      if Registered then
-      begin
+    //  if Registered then
+    //  begin
         //Статус ON/OFF
         PingProcess.Parameters.Add(
           '[[ $(ip -br a | grep CloudflareWARP) ]] && echo "yes" || echo "no"');
@@ -61,7 +61,7 @@ begin
         PingProcess.Execute;
         PingStr.LoadFromStream(PingProcess.Output);
         Synchronize(@ShowUpDown);
-      end;
+     // end;
 
       Sleep(1000);
     finally
@@ -90,7 +90,7 @@ begin
       //Освобождение сети, если WARP заблокирован снаружи и нет флага смены EndPoint
       //или нажат Запуск на плохом endpoint
       if not StartChangeEndpoint then
-        StartProcess('[[ $(warp-cli --accept-tos status | grep Connect) ]] && warp-cli disconnect');
+        StartProcess('[[ $(warp-cli --accept-tos status | grep Connect) ]] && warp-cli --accept-tos disconnect');
     end;
 
     StartBtn.Repaint;

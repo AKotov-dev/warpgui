@@ -42,7 +42,6 @@ resourcestring
   ResetWarpMsg = 'reset settings';
 
 var
-  Registered: boolean; //Флаг регистрации WARP
   MainForm: TMainForm;
   StartChangeEndpoint: boolean; //Флаг окончания смены EndPoint [F12]
 
@@ -56,7 +55,7 @@ uses PingTRD, Update_TRD, Change_Endpoint_TRD, ResetTRD;
 
 
 //1. Проверка статуса warp-svc.service (active/inactive)
-//2. Регистрация скриптом "register.sh" из "autoexpect warp-cli register" (пакет expect)
+//2. Регистрация warp-cli register
 procedure TMainForm.WarpRegister;
 var
   S: TStringList;
@@ -80,25 +79,13 @@ begin
       Application.Terminate;
     end;
 
-    //2. Запуск/Проверка регистрации через expect; если уже зарегистрирован - запроса не будет
+    //2. Проверка/Запуск регистрации
     ExProcess.Parameters.Delete(1);
-   { ExProcess.Parameters.Add(
-      '[[ -n $(grep yes ~/.local/share/warp/accepted-tos.txt) ]] || "' +
-      ExtractFilePath(ParamStr(0)) + 'register.sh"; ' +
-      'grep yes ~/.local/share/warp/accepted-tos.txt');
-    }
     ExProcess.Parameters.Add(
       '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|network|error") ]] && '
-      + 'warp-cli --accept-tos register &> /dev/null; ' +
-      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|network|error") ]] || echo "yes"');
+      + 'warp-cli --accept-tos register');
 
     ExProcess.Execute;
-
-    S.LoadFromStream(ExProcess.Output);
-
-    if S.Count <> 0 then Registered := True
-    else
-      Registered := False;
 
   finally
     S.Free;
@@ -123,29 +110,24 @@ begin
   end;
 end;
 
+//Запуск/Останов
 procedure TMainForm.StartBtnClick(Sender: TObject);
 begin
   Application.ProcessMessages;
 
-  //Если WARP зарегистрирован...
-  if Registered then
+  if StartBtn.ImageIndex = 0 then
   begin
-    if StartBtn.ImageIndex = 0 then
-    begin
-      StatusLabel.Caption := ConnectionAttempt;
-      StartProcess(
-        'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli --accept-tos disconnect; sleep 1; done; warp-cli connect');
-    end
-    else
-    begin
-      StatusLabel.Caption := Disconnection;
-      StartProcess(
-        'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli --accept-tos disconnect; sleep 1; done');
-    end;
+    StatusLabel.Caption := ConnectionAttempt;
+    StartProcess(
+      'while [[ $(ip -br a | grep CloudflareWARP) ]]; ' +
+      'do warp-cli --accept-tos disconnect; sleep 1; done; warp-cli --accept-tos connect');
   end
   else
-    //Иначе - попытка регистрации
-    WarpRegister;
+  begin
+    StatusLabel.Caption := Disconnection;
+    StartProcess(
+      'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli --accept-tos disconnect; sleep 1; done');
+  end;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -157,7 +139,7 @@ begin
   //Инициализация флага одиночного нажатия F11/F12
   StartChangeEndpoint := False;
 
-  //Проверка регистрации/регистрация WARP (Registered=False/True)
+  //Проверка/Регистрация WARP
   WarpRegister;
 
   IniPropStorage1.IniFileName := GetUserDir + '.config/warpgui.ini';
@@ -187,9 +169,6 @@ begin
   //Замена EndPoint
   if (Key = $7B) and (StartChangeEndpoint = False) then
   begin
-    if StatusLabel.Color = clGreen then
-      StartBtn.Click;
-
     //Поток проверки обновлений WARP
     FChangeEndpointThread := ChangeEndpoint.Create(False);
     FChangeEndpointThread.Priority := tpNormal;

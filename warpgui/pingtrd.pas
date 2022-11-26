@@ -44,9 +44,6 @@ begin
       PingProcess.Options := [poUsePipes, poWaitOnExit];
       PingProcess.Parameters.Add('-c');
 
-      //Если WARP зарегистрирован...
-      if Registered then
-      begin
         //Статус ON/OFF
         PingProcess.Parameters.Add(
           '[[ $(ip -br a | grep CloudflareWARP) ]] && echo "yes" || echo "no"');
@@ -61,7 +58,6 @@ begin
         PingProcess.Execute;
         PingStr.LoadFromStream(PingProcess.Output);
         Synchronize(@ShowUpDown);
-      end;
 
       Sleep(1000);
     finally
