@@ -65,7 +65,6 @@ begin
         PingStr.LoadFromStream(PingProcess.Output);
         Synchronize(@ShowStatus);
 
-
         //Статус IN/OUT
         PingProcess.Parameters.Delete(1);
         PingProcess.Parameters.Add('warp-cli --accept-tos warp-stats | awk ' +
