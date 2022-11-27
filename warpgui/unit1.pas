@@ -40,6 +40,7 @@ resourcestring
     'systemctl restart warp-svc.service';
   EndPointChange = 'replacing endpoint';
   ResetWarpMsg = 'reset settings';
+  WaitRegistration = 'wait registration...';
 
 var
   MainForm: TMainForm;
@@ -82,8 +83,7 @@ begin
     //2. Проверка/Запуск регистрации
     ExProcess.Parameters.Delete(1);
     ExProcess.Parameters.Add(
-      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|network|error") ]] && '
-      + 'warp-cli --accept-tos register');
+      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]] && warp-cli --accept-tos register');
 
     ExProcess.Execute;
 

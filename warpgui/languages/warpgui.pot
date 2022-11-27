@@ -45,6 +45,10 @@ msgctxt "unit1.waitingforconnection"
 msgid "waiting for connection..."
 msgstr ""
 
+#: unit1.waitregistration
+msgid "wait registration..."
+msgstr ""
+
 #: unit1.warpsvcstatus
 msgid ""
 "warp-svc.service is not running!\n"

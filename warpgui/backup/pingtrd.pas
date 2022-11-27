@@ -17,6 +17,7 @@ type
     PingStr: TStringList;
 
     procedure Execute; override;
+    procedure ShowRegistration;
     procedure ShowStatus;
     procedure ShowUpDown;
 
@@ -44,15 +45,26 @@ begin
       PingProcess.Options := [poUsePipes, poWaitOnExit];
       PingProcess.Parameters.Add('-c');
 
-      //Если WARP зарегистрирован...
-    //  if Registered then
-    //  begin
+      //Регистрация (yes/no?)
+      PingProcess.Parameters.Add(
+        'if [[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]]; '
+        + 'then echo "no"; else echo "yes"; fi');
+
+      PingProcess.Execute;
+      PingStr.LoadFromStream(PingProcess.Output);
+      Synchronize(@ShowRegistration);
+
+      //Если регистрация пройдена - выводим всё остальное
+      if PingStr[0] = 'yes' then
+      begin
         //Статус ON/OFF
+        PingProcess.Parameters.Delete(1);
         PingProcess.Parameters.Add(
           '[[ $(ip -br a | grep CloudflareWARP) ]] && echo "yes" || echo "no"');
         PingProcess.Execute;
         PingStr.LoadFromStream(PingProcess.Output);
         Synchronize(@ShowStatus);
+
 
         //Статус IN/OUT
         PingProcess.Parameters.Delete(1);
@@ -61,13 +73,27 @@ begin
         PingProcess.Execute;
         PingStr.LoadFromStream(PingProcess.Output);
         Synchronize(@ShowUpDown);
-     // end;
+      end;
 
       Sleep(1000);
     finally
       PingStr.Free;
       PingProcess.Free;
     end;
+end;
+
+//Состояние Регистрации
+procedure CheckPing.ShowRegistration;
+begin
+  with MainForm do
+  begin
+    if Trim(PingStr[0]) = 'no' then
+    begin
+      StartBtn.ImageIndex := 0;
+      StatusLabel.Color := clGray;
+      StatusLabel.Caption := WaitRegistration;
+    end;
+  end;
 end;
 
 //Вывод состояния (ON/OFF)
