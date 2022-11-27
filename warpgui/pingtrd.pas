@@ -114,8 +114,8 @@ begin
 
       //Освобождение сети, если WARP заблокирован снаружи и нет флага смены EndPoint
       //или нажат Запуск на плохом endpoint
-      if not StartChangeEndpoint then
-        StartProcess('[[ $(warp-cli --accept-tos status | grep Connect) ]] && warp-cli --accept-tos disconnect');
+     { if not StartChangeEndpoint then
+        StartProcess('[[ $(warp-cli --accept-tos status | grep Connect) ]] && warp-cli --accept-tos disconnect');}
     end;
 
     StartBtn.Repaint;

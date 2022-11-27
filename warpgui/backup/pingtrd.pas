@@ -47,7 +47,7 @@ begin
 
       //Регистрация (yes/no?)
       PingProcess.Parameters.Add(
-        'if [[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]]; '
+        'if [[ $(warp-cli --accept-tos status | grep -iE "registration|network|failed|error") ]]; '
         + 'then echo "no"; else echo "yes"; fi');
 
       PingProcess.Execute;
