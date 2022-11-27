@@ -118,15 +118,12 @@ begin
   if StartBtn.ImageIndex = 0 then
   begin
     StatusLabel.Caption := ConnectionAttempt;
-    StartProcess(
-      'while [[ $(ip -br a | grep CloudflareWARP) ]]; ' +
-      'do warp-cli --accept-tos disconnect; sleep 1; done; warp-cli --accept-tos connect');
+    StartProcess('warp-cli --accept-tos connect');
   end
   else
   begin
     StatusLabel.Caption := Disconnection;
-    StartProcess(
-      'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli --accept-tos disconnect; sleep 1; done');
+    StartProcess('warp-cli --accept-tos disconnect');
   end;
 end;
 

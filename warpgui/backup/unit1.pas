@@ -83,8 +83,7 @@ begin
     //2. Проверка/Запуск регистрации
     ExProcess.Parameters.Delete(1);
     ExProcess.Parameters.Add(
-      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]] && '
-      + 'warp-cli --accept-tos register');
+      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]] && warp-cli --accept-tos register');
 
     ExProcess.Execute;
 
@@ -114,20 +113,18 @@ end;
 //Запуск/Останов
 procedure TMainForm.StartBtnClick(Sender: TObject);
 begin
-  Application.ProcessMessages;
+ // Application.ProcessMessages;
 
   if StartBtn.ImageIndex = 0 then
   begin
     StatusLabel.Caption := ConnectionAttempt;
-    StartProcess(
-      'while [[ $(ip -br a | grep CloudflareWARP) ]]; ' +
-      'do warp-cli --accept-tos disconnect; sleep 1; done; warp-cli --accept-tos connect');
+    StartProcess('warp-cli --accept-tos connect');
+
   end
   else
   begin
     StatusLabel.Caption := Disconnection;
-    StartProcess(
-      'while [[ $(ip -br a | grep CloudflareWARP) ]]; do warp-cli --accept-tos disconnect; sleep 1; done');
+    StartProcess('warp-cli --accept-tos disconnect');
   end;
 end;
 
