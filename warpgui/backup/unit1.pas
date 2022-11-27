@@ -113,13 +113,12 @@ end;
 //Запуск/Останов
 procedure TMainForm.StartBtnClick(Sender: TObject);
 begin
- // Application.ProcessMessages;
+  Application.ProcessMessages;
 
   if StartBtn.ImageIndex = 0 then
   begin
     StatusLabel.Caption := ConnectionAttempt;
     StartProcess('warp-cli --accept-tos connect');
-
   end
   else
   begin

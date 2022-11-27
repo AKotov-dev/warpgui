@@ -40,7 +40,7 @@ resourcestring
     'systemctl restart warp-svc.service';
   EndPointChange = 'replacing endpoint';
   ResetWarpMsg = 'reset settings';
-  WaitRegistration = 'wait registration...';
+  WaitRegistration = 'registration attempt...';
 
 var
   MainForm: TMainForm;

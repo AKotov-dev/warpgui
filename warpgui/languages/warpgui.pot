@@ -46,7 +46,7 @@ msgid "waiting for connection..."
 msgstr ""
 
 #: unit1.waitregistration
-msgid "wait registration..."
+msgid "registration attempt..."
 msgstr ""
 
 #: unit1.warpsvcstatus
