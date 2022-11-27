@@ -54,7 +54,6 @@ uses PingTRD, Update_TRD, Change_Endpoint_TRD, ResetTRD;
 
 { TMainForm }
 
-
 //1. Проверка статуса warp-svc.service (active/inactive)
 //2. Регистрация warp-cli register
 procedure TMainForm.WarpRegister;

@@ -45,7 +45,15 @@ begin
       PingProcess.Options := [poUsePipes, poWaitOnExit];
       PingProcess.Parameters.Add('-c');
 
+      //Проверка длительного зависания на плохом EndPoint (уходим от блокировки)
+      PingProcess.Parameters.Add(
+        'i=0; while [[ $(warp-cli --accept-tos status | grep Connecting) ]]; do sleep 1; '
+        + '((i++)); if [[ $i == 3 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
+
+      PingProcess.Execute;
+
       //Регистрация (yes/no?)
+      PingProcess.Parameters.Delete(1);
       PingProcess.Parameters.Add(
         'if [[ $(warp-cli --accept-tos status | grep -iE "registration|network|failed|error") ]]; '
         + 'then echo "no"; else echo "yes"; fi');
@@ -114,8 +122,7 @@ begin
 
       //Освобождение сети, если WARP заблокирован снаружи и нет флага смены EndPoint
       //или нажат Запуск на плохом endpoint
-      if not StartChangeEndpoint then
-        StartProcess('[[ $(warp-cli --accept-tos status | grep Connect) ]] && warp-cli --accept-tos disconnect');
+      //  StartProcess('[[ $(warp-cli --accept-tos status | grep Connecting) ]] && warp-cli --accept-tos disconnect');}
     end;
 
     StartBtn.Repaint;
