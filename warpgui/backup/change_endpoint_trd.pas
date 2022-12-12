@@ -43,14 +43,16 @@ begin
     ChangeProcess.Parameters.Add('-c');
     ChangeProcess.Options := [poWaitOnExit];
 
-    //Замена EndPoint: останов (5 попыток/секунд), замена, проба подключения (5 попыток/секунд)
+    //Замена EndPoint: замена, проба подключения (2 секунды ожидания)
     //warp-cli после одиночного connect сам пытается сделать несколько попыток подключения
     //если неудача или окончание спустя 6 сек флаг StartChangeEndpoint = False, поток PingTRD сбрасывает состояние Connecting
     ChangeProcess.Parameters.Add(
-      'warp-cli --accept-tos clear-custom-endpoint; sleep 1; ' +
+      'warp-cli --accept-tos clear-custom-endpoint; ' +
       'arr=("500" "4500" "2408"); rand=$[$RANDOM % ${#arr[@]}]; ' +
       'warp-cli --accept-tos set-custom-endpoint 162.159.19$((2 + $RANDOM %2)).$((1 + $RANDOM %10)):${arr[$rand]}; '
-      + 'sleep 1; warp-cli --accept-tos connect');
+      + 'warp-cli --accept-tos connect; ' +
+      'i=0; while [[ -z $(warp-cli --accept-tos status | grep Connected) ]]; do sleep 1; '
+      + '((i++)); if [[ $i == 2 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
 
     ChangeProcess.Execute;
 
