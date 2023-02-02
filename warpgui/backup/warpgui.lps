@@ -49,7 +49,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="49"/>
         <CursorPos X="64" Y="120"/>
         <UsageCount Value="46"/>
@@ -76,9 +75,10 @@
       <Unit>
         <Filename Value="change_endpoint_trd.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="41"/>
-        <CursorPos X="42" Y="47"/>
+        <CursorPos X="32" Y="57"/>
         <UsageCount Value="29"/>
         <Loaded Value="True"/>
       </Unit>
