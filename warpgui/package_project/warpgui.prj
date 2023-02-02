@@ -24,7 +24,7 @@ group=Networking/Other
 maintainer=Alex Kotov
 
 [VENDOR]
-vendor=alex_q_2000 (C) 2022
+vendor=alex_q_2000 (C) 2023
 
 [SUMMARY]
 summary=GUI for Cloudflare (R) WARP
@@ -103,7 +103,7 @@ programname=warpgui
 devtool=Lazarus
 
 [TOOLVERSION]
-toolversion=2.2.0
+toolversion=2.2.4
 
 [INFO]
 0=GUI for Cloudflare ™ WARP
