@@ -54,7 +54,6 @@ uses PingTRD, Update_TRD, Change_Endpoint_TRD, ResetTRD;
 
 { TMainForm }
 
-
 //1. Проверка статуса warp-svc.service (active/inactive)
 //2. Регистрация warp-cli register
 procedure TMainForm.WarpRegister;
@@ -118,7 +117,7 @@ begin
   if StartBtn.ImageIndex = 0 then
   begin
     StatusLabel.Caption := ConnectionAttempt;
-    StartProcess('warp-cli --accept-tos connect');
+    StartProcess('warp-cli --accept-tos connect; sleep 1;');
   end
   else
   begin

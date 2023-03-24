@@ -14,7 +14,7 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnKeyUp = FormKeyUp
   SessionProperties = 'Top;Left'
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '2.2.4.0'
   object ToolBar1: TToolBar
     Left = 0
     Height = 92
@@ -65,6 +65,7 @@ object MainForm: TMainForm
     Font.Height = -13
     Font.Name = 'Sans'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
     Transparent = False
     OnClick = StartBtnClick

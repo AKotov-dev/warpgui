@@ -51,7 +51,7 @@ begin
       'arr=("500" "4500" "2408"); rand=$[$RANDOM % ${#arr[@]}]; ' +
       'warp-cli --accept-tos set-custom-endpoint 162.159.19$((2 + $RANDOM %2)).$((1 + $RANDOM %10)):${arr[$rand]}; '
       + 'warp-cli --accept-tos connect; ' +
-      'i=0; while [[ -z $(warp-cli --accept-tos status | grep Connected) ]]; do sleep 1; '
+      'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; '
       + '((i++)); if [[ $i == 2 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
 
     ChangeProcess.Execute;

@@ -2,7 +2,7 @@
 name=warpgui
 
 [VERSION]
-version=1.4
+version=1.5
 
 [RELEASE]
 release=0.mrx9
@@ -43,9 +43,6 @@ meta=0
 
 [NOARCH]
 noarch=0
-
-[SIGN]
-sign=0
 
 [DEB]
 deb=0
@@ -93,9 +90,6 @@ deb=0
 [URL32]
 url32=https://github.com/AKotov-dev/warpgui
 
-[URL64]
-url64=
-
 [PROGRAMNAME]
 programname=warpgui
 
@@ -114,66 +108,71 @@ toolversion=2.2.4
 5=/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare packages:
 6=URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
 7=
-8=v1.4
-9=+ Recompilation in Lazarus 2.2.4
-10=+ Update script fix: /bin/warp-update
+8=v1.5
+9=+ warp-cli 2023.3.258 - Belated status Connecting/Connected
+10=+ warpgui: Exclude network analysis by warp-cli status
 11=+ Release for Mageia-8 and Mageia-9
 12=
-13=v1.3
-14=+ Reduced switching time when locked
-15=+ Improved endpoint selection response
-16=
-17=v1.2
-18=+ Source code optimization
-19=+ Improved response to mode changes
-20=+ Monitoring the registration status
+13=v1.4
+14=+ Recompilation in Lazarus 2.2.4
+15=+ Update script fix: /bin/warp-update
+16=+ Release for Mageia-8 and Mageia-9
+17=
+18=v1.3
+19=+ Reduced switching time when locked
+20=+ Improved endpoint selection response
 21=
-22=v1.1
-23=+ Improved /etc/systemd/system/warp-svc.service
-24=+ Improved Registration/Reset [F11] (--accept-tos flag)
-25=+ Release for Mageia-8 and Mageia-9
+22=v1.2
+23=+ Source code optimization
+24=+ Improved response to mode changes
+25=+ Monitoring the registration status
 26=
-27=v1.0
-28=+ Optimization of hints show speed
-29=+ Improved the process of switching endpoints [F12]
-30=
-31=v0.9
-32=+ The registration process has been fixed
-33=+ Possibility of re-registration via reset [F11]
-34=
-35=v0.8
-36=+ [F11] - resetting WARP settings to default
-37=+ Automatic connection when changing endpoints [F12], status
-38=+ Improved response to communication channel interruption or blocking
+27=v1.1
+28=+ Improved /etc/systemd/system/warp-svc.service
+29=+ Improved Registration/Reset [F11] (--accept-tos flag)
+30=+ Release for Mageia-8 and Mageia-9
+31=
+32=v1.0
+33=+ Optimization of hints show speed
+34=+ Improved the process of switching endpoints [F12]
+35=
+36=v0.9
+37=+ The registration process has been fixed
+38=+ Possibility of re-registration via reset [F11]
 39=
-40=v0.7
-41=+ Random generation of all possible endpoints (press F12 sequentially)
-42=+ Installing warp-cli/warp-svc from the Cloudflare ™ site
-43=+ Release for Mageia-8 and Mageia-9
+40=v0.8
+41=+ [F11] - resetting WARP settings to default
+42=+ Automatic connection when changing endpoints [F12], status
+43=+ Improved response to communication channel interruption or blocking
 44=
-45=v0.6
-46=+ Improved registration process
-47=+ Connection waiting increased to 3 seconds
-48=+ Channel release if endpoint is unavailable or blocked
-49=+ F12 - emergency endpoint change; one click - new value (10 different variants)
-50=
-51=v0.5
-52=+ Automatic update of WARP to the latest version
-53=+ Added service /etc/systemd/user/warp-update.service
-54=
-55=v0.4-1
-56=+ WARP 2022.7.472
-57=
-58=v0.4
-59=+ Displaying the installed version of Cloudflare ™ WARP in the hint
-60=+ Insert ™; Cloudflare Trademark Guidelines: https://www.cloudflare.com/trademark/ (warpgui.spec, warpgui.desktop, repack.txt)
-61=+ Fixed /etc/systemd/system/warp-svc.service: deleting /etc/sysconfig/network-scripts/ifcfg-CloudflareWARP before restarting and shutting down the computer
+45=v0.7
+46=+ Random generation of all possible endpoints (press F12 sequentially)
+47=+ Installing warp-cli/warp-svc from the Cloudflare ™ site
+48=+ Release for Mageia-8 and Mageia-9
+49=
+50=v0.6
+51=+ Improved registration process
+52=+ Connection waiting increased to 3 seconds
+53=+ Channel release if endpoint is unavailable or blocked
+54=+ F12 - emergency endpoint change; one click - new value (10 different variants)
+55=
+56=v0.5
+57=+ Automatic update of WARP to the latest version
+58=+ Added service /etc/systemd/user/warp-update.service
+59=
+60=v0.4-1
+61=+ WARP 2022.7.472
 62=
-63=v0.3
-64=+ WARP 2022.5.346
-65=
-66=v0.2
-67=+ in/out traffic indicator
-68=+ automatic check of warp-svc status (main service)
-69=+ the "fping" dependency is excluded from the rpm package
-70=+ improved installation of warp-svc.service in rpm-package (spec)
+63=v0.4
+64=+ Displaying the installed version of Cloudflare ™ WARP in the hint
+65=+ Insert ™; Cloudflare Trademark Guidelines: https://www.cloudflare.com/trademark/ (warpgui.spec, warpgui.desktop, repack.txt)
+66=+ Fixed /etc/systemd/system/warp-svc.service: deleting /etc/sysconfig/network-scripts/ifcfg-CloudflareWARP before restarting and shutting down the computer
+67=
+68=v0.3
+69=+ WARP 2022.5.346
+70=
+71=v0.2
+72=+ in/out traffic indicator
+73=+ automatic check of warp-svc status (main service)
+74=+ the "fping" dependency is excluded from the rpm package
+75=+ improved installation of warp-svc.service in rpm-package (spec)
