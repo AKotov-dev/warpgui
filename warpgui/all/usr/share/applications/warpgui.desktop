@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GUI for Cloudflare ™ WARP
+Name[ru]=GUI для Cloudflare ™ WARP
+Comment=Connection encryption
+Comment[ru]=Шифрование подключения
+Icon=warpgui
+Exec=/usr/share/warpgui/warpgui
+Type=Application
+Categories=Network;WebBrowser;X-Mageia-CrossDesktop;
+Terminal=false

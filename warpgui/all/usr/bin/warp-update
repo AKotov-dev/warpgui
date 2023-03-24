@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# WARP update script
+# Dependencies: fping curl p7zip zenity
+
+#Если сайт доступен - приступить к обновлению
+[[ $(fping pkg.cloudflareclient.com) ]] || exit 1
+
+#Language select
+case $LANG in
+     ru_RU.UTF-8)
+          str=('Обновление WARP' 'Обновить WARP до последней версии?' \
+          '1. Потребуется пароль root' '2. Обновление займёт примерно 15-30 секунд' \
+          '3. Программа будет открыта после обновления')
+          ;;
+     *)
+          str=('WARP Update' 'Update WARP to the latest version?' \
+          '1. You will need a root password' '2. The update will take about 15-30 seconds' \
+          '3. The program will be opened after the update')
+          ;;
+esac
+
+#Версия локального warp-cli (цифры = число)
+test -f /usr/bin/warp-svc && lversion=$(warp-cli --version | sed s/[^0-9]//g) || lversion="0"
+
+#Имя новейшего пакета *.rpm на сайте
+pname=$(curl -s https://pkg.cloudflareclient.com/packages/cloudflare-warp | tr ',' '\n' | \
+grep '"url"' | grep '.rpm' | cut -d '/' -f3 | head -n1 | tr -d '"')
+
+#Версия warp-cli на сайте (цифры = число)
+rversion=$(echo $pname | awk -F "_" '{ print $3$4$5 }' | sed s/[^0-9]//g)
+
+#Сравнение версий и обновление
+if [[ -n $rversion && $lversion != $rversion ]]; then
+zenity --question --title="${str[0]}" --text="${str[1]}\n\n${str[2]}\n${str[3]}\n${str[4]}" --no-wrap
+    if [[ $? -eq 0 ]]; then
+	killall warpgui; warp-cli disconnect
+
+	pkexec /bin/bash -c "\
+	systemctl stop warp-svc.service; \
+	[[ -d ~/tmp/warpgui ]] || mkdir -p ~/tmp/warpgui; cd ~/tmp/warpgui; \
+	curl https://pkg.cloudflareclient.com/uploads/$pname -o $pname; \
+	7z e -y ./*.rpm; 7z e -y ./*.cpio; \
+	cp -fv {warp-cli,warp-svc} /usr/bin/; \
+	chmod +x /usr/bin/{warp-cli,warp-svc}; \
+	systemctl restart warp-svc.service; rm -rf ~/tmp/warpgui"
+
+	sleep 2; [[ $(pidof warpgui) ]] || /usr/share/warpgui/warpgui
+    fi;
+fi;
+
+exit 0;

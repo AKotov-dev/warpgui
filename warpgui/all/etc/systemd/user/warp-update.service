@@ -1,0 +1,10 @@
+[Unit]
+Description=WARP Update Service
+
+[Service]
+Type=simple
+ExecStart=warp-update
+KillMode=mixed
+
+[Install]
+WantedBy=default.target
