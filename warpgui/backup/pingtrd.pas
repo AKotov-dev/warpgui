@@ -45,18 +45,17 @@ begin
       PingProcess.Options := [poUsePipes, poWaitOnExit];
       PingProcess.Parameters.Add('-c');
 
-      //Проверка длительного зависания на плохом EndPoint (уходим от блокировки, ожидание 2 сек)
+
      { PingProcess.Parameters.Add(
-        'i=0; while [[ $(warp-cli --accept-tos status | grep Connecting) ]]; do sleep 1; '
+        'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; '
         + '((i++)); if [[ $i == 3 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
       }
-      PingProcess.Parameters.Add('sleep 0');
-
+    //  PingProcess.Parameters.Add('sleep 0');
 
       PingProcess.Execute;
 
       //Регистрация (yes/no?)
-      PingProcess.Parameters.Delete(1);
+    //  PingProcess.Parameters.Delete(1);
       PingProcess.Parameters.Add(
         'if [[ $(warp-cli --accept-tos status | grep -iE "registration|network|failed|error") ]]; '
         + 'then echo "no"; else echo "yes"; fi');
