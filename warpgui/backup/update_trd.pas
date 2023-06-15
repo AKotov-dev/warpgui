@@ -40,16 +40,16 @@ begin
     UpdateProcess.Parameters.Add('-c');
     UpdateProcess.Options := [poUsePipes, poWaitOnExit];
 
-    UpdateProcess.Parameters.Add(
+  {  UpdateProcess.Parameters.Add(
       '[[ $(systemctl is-active warp-update) == active ]] || systemctl --user start warp-update');
 
     //Запуск Загрузки/Обновления
     UpdateProcess.Execute;
-
+  }
     //Показать версию WARP
     UpdateProcess.Parameters.Delete(1);
     UpdateProcess.Parameters.Add('warp-cli --version; echo -e "---\nF11 - ' +
-    ResetWarpMsg + '\nF12 - ' + EndPointChange + '"');
+      ResetWarpMsg + '\nF12 - ' + EndPointChange + '"');
     UpdateProcess.Execute;
 
     S.LoadFromStream(UpdateProcess.Output);
