@@ -1,6 +1,6 @@
 # warpgui
 GUI for Cloudflare ™ WARP  
-  
+    
 + Automatic registration with the WARP API
 + Automatic check of warp-svc.service status
 + Sent/Received (IN/OUT) connection indicator
