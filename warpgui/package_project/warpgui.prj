@@ -79,16 +79,10 @@ deb=0
 [BEFOREINSTALL]
 0=#!/bin/bash
 1=
-2=#Подключение репозитория Cloudflare (TM)
-3=echo "Connecting the Cloudflare (TM) repository..."
-4=if [ ! -f /etc/yum.repos.d/cloudflare-warp.repo ]; then
-5=curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo && yum update
-6=fi;
-7=
-8=#Обновление
-9=#if [ $1 -eq 2 ]; then
-10=#systemctl stop warp-svc; systemctl disable warp-svc
-11=#fi
+2=#Обновление
+3=#if [ $1 -eq 2 ]; then
+4=#systemctl stop warp-svc; systemctl disable warp-svc
+5=#fi
 
 [BEFOREREMOVE]
 0=#!/bin/bash
@@ -118,8 +112,8 @@ toolversion=2.2.4
 3=Install cloudflare-warp from repo: https://pkg.cloudflareclient.com/#rhel
 4=
 5=v1.6
-6=+ Automatic updates are disabled (merit Cloudflare ™)
-7=+ Connecting the Cloudflare ™ repository (rpm, warpgui.spec)
+6=+ Automatic updates are disabled
+7=+ `cloudflare-warp` package required (spec)
 8=+ Release for Mageia-9 (Mageia-8 is unstable)
 9=
 10=**Note:** The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf install -y cloudflare-warp`.
