@@ -14,11 +14,10 @@ group=Networking/Other
 0=GUI for Cloudflare ™ WARP
 1=URL: https://developers.cloudflare.com/warp-client/get-started/linux/
 2=
-3=Since there are no cloudflare-warp packages for Mageia, warpgui packages already contain
-4=/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare ™ packages:
-5=https://pkg.cloudflareclient.com/packages/cloudflare-warp
-6=---
-7=More information: /usr/share/doc/package_name/repack.txt
+3=The cloudflare-warp package is now updated as part of a general system update from the Cloudflare ™ WARP repository
+4=https://pkg.cloudflareclient.com/#rhel or manually via the command dnf install -y cloudflare-warp.
+5=---
+6=More information: /usr/share/doc/package_name/repack.txt
 
 [MAINTAINER]
 maintainer=Alex Kotov
@@ -49,9 +48,9 @@ deb=0
 
 [FILES]
 0=/usr/share/warpgui/
-1=/usr/share/icons/warpgui.png
-2=/usr/share/applications/warpgui.desktop
-3=/usr/share/doc/warpgui/
+1=/usr/share/doc/warpgui/
+2=/usr/share/icons/warpgui.png
+3=/usr/share/applications/warpgui.desktop
 
 [URL32]
 url32=https://github.com/AKotov-dev/warpgui
@@ -72,9 +71,9 @@ toolversion=2.2.4
 3=Install cloudflare-warp from repo: https://pkg.cloudflareclient.com/#rhel
 4=
 5=v1.6
-6=+ Automatic updates are disabled
-7=+ `cloudflare-warp` package required (spec)
-8=+ Release for Mageia-9 (Mageia-8 is unstable)
+6=+ `cloudflare-warp` package required (spec)
+7=+ Cloudflare (TM) WARP auto update disabled
+8=+ RPM packages for Mageia-9 (Mageia-8 is unstable)
 9=
 10=**Note:** The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf install -y cloudflare-warp`.
 11=
