@@ -1,8 +1,6 @@
 # warpgui
 GUI for Cloudflare ™ WARP  
-  
 ![](https://github.com/AKotov-dev/warpgui/blob/main/ScreenShots/warpgui-11.png) ![](https://github.com/AKotov-dev/warpgui/blob/main/ScreenShots/warpgui-12.png)  
-
 + Automatic registration with the WARP API
 + Automatic check of warp-svc.service status
 + Sent/Received (IN/OUT) connection indicator
