@@ -12,7 +12,8 @@ GUI for Cloudflare ™ WARP
 Cloudflare ™ (Linux desktop client): https://developers.cloudflare.com/warp-client/get-started/linux/  
   
 The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf install -y cloudflare-warp`.  
-All actions for Mageia Linux (under `su`)
+  
+All actions for Mageia Linux (under `su`):
 ```
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo && dnf update && dnf install -y cloudflare-warp
 ```
