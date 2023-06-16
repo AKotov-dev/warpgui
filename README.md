@@ -1,6 +1,8 @@
 # warpgui
 GUI for Cloudflare ™ WARP  
-    
+  
+![](https://github.com/AKotov-dev/warpgui/blob/main/ScreenShots/warpgui-11.png) ![](https://github.com/AKotov-dev/warpgui/blob/main/ScreenShots/warpgui-12.png)  
+
 + Automatic registration with the WARP API
 + Automatic check of warp-svc.service status
 + Sent/Received (IN/OUT) connection indicator
@@ -15,5 +17,4 @@ Installing the repository and the `cloudflare-warp` package (under `su`):
 ```
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo && dnf update && dnf install -y cloudflare-warp
 ```
-![](https://github.com/AKotov-dev/warpgui/blob/main/ScreenShots/warpgui-11.png) ![](https://github.com/AKotov-dev/warpgui/blob/main/ScreenShots/warpgui-12.png)  
 **Note:** Tested in Mageia-9. [WARP with firewall](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/firewall/): to check the WARP functionality, temporarily disable `iptables`.
