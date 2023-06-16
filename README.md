@@ -9,10 +9,10 @@ GUI for Cloudflare ™ WARP
   
 **Dependencies:** [cloudflare-warp](https://pkg.cloudflareclient.com/#rhel) gtk2
   
-The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf -y install libcap-utils cloudflare-warp`.  
+The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf install -y libcap-utils && dnf install -y cloudflare-warp`.  
   
 Installing the repository and the `cloudflare-warp` package (under `su`):
 ```
-curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo && dnf update && dnf install -y libcap-utils cloudflare-warp
+curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo && dnf update && dnf install -y libcap-utils && dnf install -y cloudflare-warp
 ```
 Tested in Mageia-9. [WARP with firewall](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/firewall/): to check the WARP functionality, temporarily disable `iptables`.
