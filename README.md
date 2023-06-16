@@ -13,6 +13,6 @@ The `cloudflare-warp` package is now updated as part of a general system update 
   
 Installing the repository and the `cloudflare-warp` package (under `su`):
 ```
-curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo && dnf update && dnf install -y libcap-utils && dnf install -y cloudflare-warp
+curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo && dnf update && dnf install -y libcap-utils && sleep 1 && dnf install -y cloudflare-warp
 ```
 Tested in Mageia-9. [WARP with firewall](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/firewall/): to check the WARP functionality, temporarily disable `iptables`.
