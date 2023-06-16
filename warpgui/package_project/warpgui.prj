@@ -52,46 +52,6 @@ deb=0
 1=/usr/share/icons/warpgui.png
 2=/usr/share/applications/warpgui.desktop
 3=/usr/share/doc/warpgui/
-4=/etc/systemd/system/warp-svc.service
-
-[AFTERINSTALL]
-0=#!/bin/bash
-1=
-2=#Первая установка
-3=if [ $1 -eq 1 ]; then
-4=systemctl daemon-reload; systemctl enable warp-svc; systemctl restart warp-svc
-5=fi
-6=
-7=#Обновление
-8=if [ $1 -eq 2 ]; then
-9=systemctl daemon-reload; systemctl enable warp-svc; systemctl restart warp-svc
-10=fi
-
-[AFTERREMOVE]
-0=#!/bin/bash
-1=
-2=#Удаление при обновлении
-3=if [ $1 -eq 1 ]; then
-4=systemctl daemon-reload; systemctl enable warp-svc
-5=# systemctl restart warp-svc
-6=fi
-
-[BEFOREINSTALL]
-0=#!/bin/bash
-1=
-2=#Обновление
-3=#if [ $1 -eq 2 ]; then
-4=#systemctl stop warp-svc; systemctl disable warp-svc
-5=#fi
-
-[BEFOREREMOVE]
-0=#!/bin/bash
-1=
-2=#Окончательное удаление
-3=if [ $1 -eq 0 ]; then
-4=systemctl stop warp-svc; systemctl disable warp-svc; systemctl daemon-reload
-5=#test "/usr/bin/warp-svc" && rm -f /usr/bin/{warp-svc,warp-cli}
-6=fi
 
 [URL32]
 url32=https://github.com/AKotov-dev/warpgui
