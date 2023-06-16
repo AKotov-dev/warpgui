@@ -4,7 +4,6 @@ GUI for Cloudflare ™ WARP
 + Automatic registration with the WARP API
 + Automatic check of warp-svc.service status
 + Sent/Received (IN/OUT) connection indicator
-+ Connecting the Cloudflare ™ repository (rpm)
 + The `F11` key - resetting WARP settings to default
 + The `F12` key - emergency `endpoint` change; one click - new value (60 options)
   
