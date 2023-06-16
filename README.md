@@ -9,8 +9,6 @@ GUI for Cloudflare ™ WARP
   
 **Dependencies:** [cloudflare-warp](https://pkg.cloudflareclient.com/#rhel) gtk2
   
-Cloudflare ™ (Linux desktop client): https://developers.cloudflare.com/warp-client/get-started/linux/  
-  
 The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf install -y cloudflare-warp`.  
   
 All actions for Mageia Linux (under `su`):
