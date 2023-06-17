@@ -5,7 +5,7 @@ program warpgui;
 uses
  {$IFDEF UNIX}
   cthreads,
-         {$ENDIF}
+           {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms,
   Unit1,
@@ -17,11 +17,11 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.HintPause := 500;
-  Application.HintHidePause := 3000;
+  Application.HintPause := 600;
+  Application.HintHidePause := 3500;
   Application.HintHidePausePerChar := 0;
-  Application.Title:='warpgui-v1.7';
-  Application.Scaled:=True;
+  Application.Title := 'warpgui-v1.7';
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
