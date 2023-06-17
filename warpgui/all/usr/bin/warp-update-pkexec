@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY bash -c "xterm \
+##pkexec bash -c "xterm \
+#-xrm XTerm*allowTitleOps:false \
+#-xrm XTerm*cursorColor:red \
+#-xrm XTerm*cursorBlink:true \
+#-fa monospace \
+#-fs 9 \
+#-T 'cloudflare-warp installing/updating started...' \
+#-g 92x30+0+40 \
+#-e warp-update"
+
+pkexec /usr/bin/warp-update

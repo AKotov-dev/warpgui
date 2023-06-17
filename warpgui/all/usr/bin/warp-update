@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# cloudflare-warp install/update script
+
+pkill dnf 2>/dev/null
+
+xterm \
+-xrm XTerm*allowTitleOps:false \
+-xrm XTerm*cursorColor:red \
+-xrm XTerm*cursorBlink:true \
+-fa monospace \
+-fs 9 \
+-T 'cloudflare-warp installing/updating started...' \
+-g 92x30+200+50 \
+-e "\
+if [[ -z \$(dnf repolist | grep cloudflare-warp-stable) ]]; then \
+echo 'Installing repository...'; \
+curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | \
+tee /etc/yum.repos.d/cloudflare-warp.repo; \
+echo ''; \
+fi; \
+echo -e 'Updating DNF metadata...'; \
+dnf clean all && dnf makecache; \
+echo -e '\nInstalling cloudflare-warp package...'; \
+dnf install -y libcap-utils && dnf install -y cloudflare-warp; \
+echo -e '\n---\nPress any key to Exit...'; \
+read a; \
+exit 0
+"
+
+exit 0
