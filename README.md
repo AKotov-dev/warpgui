@@ -4,10 +4,11 @@ GUI for Cloudflare ™ WARP
 + Automatic registration with the WARP API
 + Automatic check of warp-svc.service status
 + Sent/Received (IN/OUT) connection indicator
++ The `F2` key - installation of cloudflare-warp
 + The `F11` key - resetting WARP settings to default
 + The `F12` key - emergency `endpoint` change; one click - new value (60 options)
   
-**Dependencies:** cloudflare-warp gtk2
+**Dependencies:** gtk2 xterm libcap-utils
   
 The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf install -y libcap-utils && dnf install -y cloudflare-warp`.  
   

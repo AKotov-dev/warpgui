@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.2.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: tmainform.caption
 msgid "WARP"
@@ -50,6 +50,10 @@ msgstr "замена endpoint"
 #: unit1.resetwarpmsg
 msgid "reset settings"
 msgstr "сброс настроек"
+
+#: unit1.updatewarpmsg
+msgid "warp update"
+msgstr "обновить warp"
 
 #: unit1.waitingforconnection
 msgctxt "unit1.waitingforconnection"

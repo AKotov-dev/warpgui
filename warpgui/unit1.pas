@@ -40,6 +40,7 @@ resourcestring
     'systemctl restart warp-svc.service';
   EndPointChange = 'replacing endpoint';
   ResetWarpMsg = 'reset settings';
+  UpdateWarpMsg = 'warp update';
   WaitRegistration = 'registration attempt...';
 
 var
@@ -153,12 +154,20 @@ begin
   FUpdateThread.Priority := tpNormal;
 end;
 
-//[F12] - Генерация endpoint: 162.159.19(2,3).(1-10):(2048,500,4500)
+//[F12] - Генерация endpoint:
 procedure TMainForm.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
 var
-  FChangeEndpointThread, FResetWarpThread: TThread;
+  FChangeEndpointThread, FResetWarpThread, FUpdateThread: TThread;
 begin
-  //Сброс настроек WARP
+  //Установка/Обновление cloudflare-warp [F2]
+  if (Key = $71) and (StartChangeEndpoint = False) then
+  begin
+    //Поток проверки обновлений WARP
+    FUpdateThread := CheckUpdate.Create(False);
+    FUpdateThread.Priority := tpNormal;
+  end;
+
+  //Сброс настроек WARP [F11]
   if (Key = $7A) and (StartChangeEndpoint = False) then
   begin
     //Поток сброса настроек WARP
@@ -166,7 +175,7 @@ begin
     FResetWarpThread.Priority := tpNormal;
   end;
 
-  //Замена EndPoint
+  //Замена EndPoint [F12]
   if (Key = $7B) and (StartChangeEndpoint = False) then
   begin
     //Поток проверки обновлений WARP

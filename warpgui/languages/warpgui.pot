@@ -40,6 +40,10 @@ msgstr ""
 msgid "reset settings"
 msgstr ""
 
+#: unit1.updatewarpmsg
+msgid "warp update"
+msgstr ""
+
 #: unit1.waitingforconnection
 msgctxt "unit1.waitingforconnection"
 msgid "waiting for connection..."
