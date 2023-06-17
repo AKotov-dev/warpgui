@@ -10,7 +10,7 @@ GUI for Cloudflare ™ WARP
   
 **Dependencies:** gtk2 xterm libcap-utils
   
-The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf install -y libcap-utils && dnf install -y cloudflare-warp`.  
+The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) (`F2` key) or manually via the command: `dnf install -y libcap-utils && dnf install -y cloudflare-warp`.  
   
 Manual installation of the repository and the `cloudflare-warp` package for Mageia (if necessary):
 ```
