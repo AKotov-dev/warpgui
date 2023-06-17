@@ -12,7 +12,7 @@ GUI for Cloudflare ™ WARP
   
 The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf install -y libcap-utils && dnf install -y cloudflare-warp`.  
   
-Installing the repository and the `cloudflare-warp` package for Mageia (under `su`):
+Manual installation of the repository and the `cloudflare-warp` package for Mageia (if necessary):
 ```
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo && dnf update && dnf install -y libcap-utils && dnf install -y cloudflare-warp
 ```
