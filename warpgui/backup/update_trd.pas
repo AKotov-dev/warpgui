@@ -41,14 +41,14 @@ begin
     UpdateProcess.Options := [poUsePipes, poWaitOnExit];
 
     UpdateProcess.Parameters.Add(
-      '[ -f /usr/bin/warp-svc ] || warp-update-pkexec');
+      '[ -f /usr/bin/warp-svc1 ] || warp-update-pkexec');
 
     //Запуск Загрузки/Обновления
     UpdateProcess.Execute;
 
     //Показать версию WARP
     UpdateProcess.Parameters.Delete(1);
-    UpdateProcess.Parameters.Add('warp-cli --version; echo -e "---\nF2 -' +
+    UpdateProcess.Parameters.Add('warp-cli --version; echo -e "---\nF2 - ' +
       UpdateWarpMsg + '\nF11 - ' + ResetWarpMsg + '\nF12 - ' + EndPointChange + '"');
     UpdateProcess.Execute;
 

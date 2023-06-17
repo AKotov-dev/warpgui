@@ -38,8 +38,7 @@
       <Unit>
         <Filename Value="warpgui.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="1"/>
         <CursorPos X="19"/>
         <UsageCount Value="47"/>
         <Loaded Value="True"/>
@@ -68,8 +67,10 @@
       <Unit>
         <Filename Value="update_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
-        <CursorPos X="18"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="22"/>
+        <CursorPos X="30" Y="44"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit>
