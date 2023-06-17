@@ -45,7 +45,7 @@ resourcestring
 
 var
   MainForm: TMainForm;
-  StartChangeEndpoint: boolean; //Флаг окончания смены EndPoint [F12]
+  StartChangeEndpoint, UpdateKeyPress: boolean; //Флаг окончания смены EndPoint [F12] и кнопки Update [F2]
 
 implementation
 
@@ -154,13 +154,13 @@ begin
   FUpdateThread.Priority := tpNormal;
 end;
 
-//[F12] - Генерация endpoint:
+//Опрос клавы
 procedure TMainForm.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
 var
   FChangeEndpointThread, FResetWarpThread, FUpdateThread: TThread;
 begin
-  //Установка/Обновление cloudflare-warp [F10]
-  if (Key = $79) and (StartChangeEndpoint = False) then
+  //Установка/Обновление cloudflare-warp [F2]
+  if (Key = $71) and (StartChangeEndpoint = False) then
   begin
     //Поток проверки обновлений WARP
     FUpdateThread := CheckUpdate.Create(False);

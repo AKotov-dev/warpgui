@@ -41,7 +41,7 @@ begin
     UpdateProcess.Options := [poUsePipes, poWaitOnExit];
 
     UpdateProcess.Parameters.Add(
-      '[ -f /usr/bin/warp-svc1 ] || warp-update-pkexec');
+      '[ -f /usr/bin/warp-svc ] || warp-update-pkexec');
 
     //Запуск Загрузки/Обновления
     UpdateProcess.Execute;
