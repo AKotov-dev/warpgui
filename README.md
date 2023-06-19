@@ -8,7 +8,7 @@ GUI for Cloudflare ™ WARP
 + The `F11` key - resetting WARP settings to default
 + The `F12` key - emergency `endpoint` change; one click - new value (60 options)
   
-**Dependencies:** gtk2 xterm libcap-utils
+**Dependencies:** gtk2 xterm libcap-utils dnf
   
 The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) (`F2` key) or manually via the command: `dnf install -y libcap-utils && dnf install -y cloudflare-warp`.  
   

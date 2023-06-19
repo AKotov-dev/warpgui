@@ -45,7 +45,7 @@ begin
       UpdateProcess.Parameters.Add('warp-update-pkexec')
     else
       UpdateProcess.Parameters.Add(
-        '[ -f /usr/bin/warp-svc ] || warp-update-pkexec');
+        '[ -f /bin/warp-svc ] || warp-update-pkexec');
 
     //Запуск Загрузки/Обновления
     UpdateProcess.Execute;

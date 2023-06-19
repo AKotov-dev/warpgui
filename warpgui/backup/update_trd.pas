@@ -40,8 +40,12 @@ begin
     UpdateProcess.Parameters.Add('-c');
     UpdateProcess.Options := [poUsePipes, poWaitOnExit];
 
-    UpdateProcess.Parameters.Add(
-      '[ -f /usr/bin/warp-svc ] || warp-update-pkexec');
+    //Кнопка обновления нажата - безусловное обновление cloudflare-warp
+    if UpdateKeyPress then
+      UpdateProcess.Parameters.Add('warp-update-pkexec')
+    else
+      UpdateProcess.Parameters.Add(
+        '[ -f /usr/bin/warp-svc ] || warp-update-pkexec');
 
     //Запуск Загрузки/Обновления
     UpdateProcess.Execute;
@@ -63,6 +67,7 @@ end;
 //Останов обновления
 procedure CheckUpdate.StopUpdate;
 begin
+  UpdateKeyPress := False;
   //Перечитываем версию в подсказке
   MainForm.StartBtn.Hint := S.Text;
 end;
