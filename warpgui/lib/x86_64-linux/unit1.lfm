@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 306
+  Left = 280
   Height = 117
-  Top = 122
+  Top = 127
   Width = 238
   AlphaBlendValue = 225
   AutoSize = True

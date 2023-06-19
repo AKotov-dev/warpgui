@@ -45,7 +45,8 @@ resourcestring
 
 var
   MainForm: TMainForm;
-  StartChangeEndpoint, UpdateKeyPress: boolean; //Флаг окончания смены EndPoint [F12] и кнопки Update [F2]
+  StartChangeEndpoint, UpdateKeyPress: boolean;
+//Флаг окончания смены EndPoint [F12] и кнопки Update [F2]
 
 implementation
 
@@ -163,6 +164,7 @@ begin
   if (Key = $71) and (StartChangeEndpoint = False) then
   begin
     //Поток проверки обновлений WARP
+    UpdateKeyPress := True;
     FUpdateThread := CheckUpdate.Create(False);
     FUpdateThread.Priority := tpNormal;
   end;
