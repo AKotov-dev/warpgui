@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # cloudflare-warp install/update script
+test -d /etc/yum.repos.d || mkdir -p /etc/yum.repos.d
 
 pkill dnf 2>/dev/null
 
