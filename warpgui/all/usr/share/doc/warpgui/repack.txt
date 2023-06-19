@@ -1,10 +1,10 @@
-This repack.txt file was created automatically by RPMCreator v2.3
+This repack.txt file was created automatically by RPMCreator v2.5
 It contains the necessary information to recreation the program from the source code
 
 Information about the program:
 ---
 Name of program: warpgui
-Version of program: 1.5
+Version of program: 1.7
 Program development tool: Lazarus
 Version of program development tool: 2.2.4
 URL the sources + binaries of the author: https://github.com/AKotov-dev/warpgui
@@ -12,10 +12,10 @@ URL the sources + binaries of the author: https://github.com/AKotov-dev/warpgui
 Information about the rpm-package:
 ---
 Build method: Portable RPM
-Time stamp: 24-3-23 13:35:18
+Time stamp: 19-6-23 08:51:57
 
 Name: warpgui
-Version: 1.5
+Version: 1.7
 Release: 0.mrx9
 Group: Networking/Other
 License: GPLv3
@@ -23,32 +23,46 @@ Maintainer: Alex Kotov
 Vendor: alex_q_2000 (C) 2023
 URL of the copy source codes: https://pkg.cloudflareclient.com/packages/cloudflare-warp
 
-Summary: GUI for Cloudflare (R) WARP
+Summary: GUI for Cloudflare ™ WARP
 
 Description:
 ---
 GUI for Cloudflare ™ WARP
 URL: https://developers.cloudflare.com/warp-client/get-started/linux/
 
-Since there are no cloudflare-warp packages for Mageia, warpgui packages already contain
-/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare ™ packages:
-https://pkg.cloudflareclient.com/packages/cloudflare-warp
+The cloudflare-warp package is now updated as part of a general system update from the Cloudflare ™ WARP repository
+https://pkg.cloudflareclient.com/#rhel or manually via the command dnf install -y cloudflare-warp.
 ---
 More information: /usr/share/doc/package_name/repack.txt
 
 Package dependencies:
 ---
-nftables zenity p7zip fping curl
+gtk2 xterm libcap-utils dnf
 
 Additionally information:
 ---
 GUI for Cloudflare ™ WARP
 ---
 URL: https://developers.cloudflare.com/warp-client/get-started/linux/
+Install cloudflare-warp from repo: https://pkg.cloudflareclient.com/#rhel
 
-Since there are no cloudflare-warp packages for Mageia, warpgui packages already contain
-/usr/bin/warp-cli and /usr/bin/warp-svc from the original Cloudflare packages:
-URL: https://pkg.cloudflareclient.com/packages/cloudflare-warp
+v1.8
++ Improving the updater [F2]
++ Compatible with ROSA Linux
++ Packages for Mageia-9 and ROSA-12.3 (*.mrx8)
+
+**Note:** To use in ROSA Linux, you need to install [rosa-resolver-patch](https://github.com/AKotov-dev/rosa-resolver-patch)
+
+v1.7
++ Automatic installation of cloudflare-warp [F2]
++ RPM packages for Mageia-9 (Mageia-8 is unstable)
+
+v1.6
++ `cloudflare-warp` package required (spec)
++ Cloudflare (TM) WARP auto update disabled
++ RPM packages for Mageia-9 (Mageia-8 is unstable)
+
+**Note:** The `cloudflare-warp` package is now updated as part of a general system update from the Cloudflare ™ WARP [repository](https://pkg.cloudflareclient.com/#rhel) or manually via the command: `dnf install -y cloudflare-warp`.
 
 v1.5
 + warp-cli 2023.3.258 - Belated status Connecting/Connected

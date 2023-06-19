@@ -4,28 +4,35 @@
 
 pkill dnf 2>/dev/null
 
+#-cr magenta \
+
+tput sgr 0
+
 xterm \
 -xrm XTerm*allowTitleOps:false \
--xrm XTerm*cursorColor:red \
+-xrm XTerm*scrollBar:false \
+-xrm XTerm*saveLines:1000 \
 -xrm XTerm*cursorBlink:true \
+-xrm XTerm*cursorColor:red \
+-bg white \
+-fg black \
 -fa monospace \
 -fs 9 \
 -T 'cloudflare-warp installing/updating started...' \
--g 92x30+200+50 \
+-g 100x32+200+50 \
 -e "\
 if [[ -z \$(dnf repolist | grep cloudflare-warp-stable) ]]; then \
-echo 'Installing repository...'; \
+echo -e '\e[31mInstalling repository...\e[0m'; \
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | \
 tee /etc/yum.repos.d/cloudflare-warp.repo; \
 echo ''; \
 fi; \
-echo -e 'Updating DNF metadata...'; \
+echo -e '\e[31mUpdating DNF metadata...\e[0m'; \
 dnf clean all && dnf makecache; \
-echo -e '\nInstalling cloudflare-warp package...'; \
+echo -e '\n\e[31mInstalling cloudflare-warp package...\e[0m'; \
 dnf install -y libcap-utils && dnf install -y cloudflare-warp; \
 echo -e '\n---\nPress any key to Exit...'; \
 read a; \
-exit 0
-"
+exit 0"
 
-exit 0
+exit 0;
