@@ -11,7 +11,7 @@ release=0.mrx9
 group=Networking/Other
 
 [DESCRIPTION]
-0=GUI for Cloudflare ™ WARP
+0=GUI for Cloudflare (TM) WARP
 1=URL: https://developers.cloudflare.com/warp-client/get-started/linux/
 2=
 3=The cloudflare-warp package is now updated as part of a general system update from the Cloudflare ™ WARP repository
@@ -26,7 +26,7 @@ maintainer=Alex Kotov
 vendor=alex_q_2000 (C) 2023
 
 [SUMMARY]
-summary=GUI for Cloudflare ™ WARP
+summary=GUI for Cloudflare (TM) WARP
 
 [URLCOPY]
 urlcopy=https://pkg.cloudflareclient.com/packages/cloudflare-warp
