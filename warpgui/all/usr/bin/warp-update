@@ -31,7 +31,7 @@ fi; \
 echo -e '\e[31mUpdating DNF metadata...\e[0m'; \
 dnf clean all && dnf makecache; \
 echo -e '\n\e[31mInstalling cloudflare-warp package...\e[0m'; \
-dnf update -y libcap-utils; dnf update -y cloudflare-warp; \
+dnf -y --best install libcap-utils; dnf -y --best install cloudflare-warp; \
 echo -e '\n---\nPress any key to Exit...'; \
 read a; \
 exit 0"
