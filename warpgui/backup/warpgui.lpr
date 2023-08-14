@@ -20,8 +20,8 @@ begin
   Application.HintPause := 600;
   Application.HintHidePause := 3500;
   Application.HintHidePausePerChar := 0;
-  Application.Title := 'warpgui-v1.7';
-  Application.Scaled := True;
+  Application.Title:='warpgui-v1.8';
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
