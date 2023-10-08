@@ -20,7 +20,7 @@ xterm \
 -fa monospace \
 -fs 9 \
 -T 'cloudflare-warp installing/updating started...' \
--g 100x32+200+50 \
+-g 110x35+200+50 \
 -e "\
 if [[ -z \$(dnf repolist | grep cloudflare-warp-stable) ]]; then \
 echo -e '\e[31mInstalling repository...\e[0m'; \
