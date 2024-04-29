@@ -104,6 +104,7 @@ begin
     ExProcess.Executable := '/bin/bash';
     ExProcess.Parameters.Add('-c');
     ExProcess.Parameters.Add(command);
+    //ExProcess.Options:=[poWaitOnExit];
 
     ExProcess.Execute;
   finally

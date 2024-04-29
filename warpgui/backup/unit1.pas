@@ -104,6 +104,7 @@ begin
     ExProcess.Executable := '/bin/bash';
     ExProcess.Parameters.Add('-c');
     ExProcess.Parameters.Add(command);
+    //ExProcess.Options:=[poWaitOnExit];
 
     ExProcess.Execute;
   finally
@@ -118,12 +119,13 @@ begin
 
   if StartBtn.ImageIndex = 0 then
   begin
+   Application.ProcessMessages;
     StatusLabel.Caption := ConnectionAttempt;
 
-    //Проверка длительного зависания на плохом EndPoint (уходим от блокировки, ожидание 5 сек)
+    //Проверка длительного зависания на плохом EndPoint (уходим от блокировки, ожидание 3 сек)
     StartProcess('warp-cli --accept-tos connect; ' +
       'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; ' +
-      '((i++)); if [[ $i == 5 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
+      '((i++)); if [[ $i == 3 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
   end
   else
   begin

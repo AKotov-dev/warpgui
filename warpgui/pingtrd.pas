@@ -27,7 +27,7 @@ implementation
 
 uses unit1;
 
-{ TRD }
+  { TRD }
 
 //Контроль статуса
 procedure CheckPing.Execute;
@@ -37,15 +37,15 @@ begin
   FreeOnTerminate := True; //Уничтожать по завершении
 
   while not Terminated do
-    try
-      PingStr := TStringList.Create;
-      PingProcess := TProcess.Create(nil);
+  try
+    PingStr := TStringList.Create;
+    PingProcess := TProcess.Create(nil);
 
-      PingProcess.Executable := 'bash';
-      PingProcess.Options := [poUsePipes, poWaitOnExit];
-      PingProcess.Parameters.Add('-c');
+    PingProcess.Executable := 'bash';
+    PingProcess.Options := [poUsePipes, poWaitOnExit];
+    PingProcess.Parameters.Add('-c');
 
-      //Проверка длительного зависания на плохом EndPoint (уходим от блокировки, ожидание 2 сек)
+    //Проверка длительного зависания на плохом EndPoint (уходим от блокировки, ожидание 2 сек)
      { PingProcess.Parameters.Add(
         'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; '
         + '((i++)); if [[ $i == 3 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
@@ -54,41 +54,41 @@ begin
 
       PingProcess.Execute; }
 
-      //Регистрация (yes/no?)
-      //  PingProcess.Parameters.Delete(1);
-      PingProcess.Parameters.Add(
-        'if [[ $(warp-cli --accept-tos status | grep -iE "registration|network|failed|error") ]]; '
-        + 'then echo "no"; else echo "yes"; fi');
+    //Регистрация (yes/no?)
+    //  PingProcess.Parameters.Delete(1);
+    PingProcess.Parameters.Add(
+      'if [[ $(warp-cli --accept-tos status | grep -iE "registration|network|failed|error") ]]; '
+      + 'then echo "no"; else echo "yes"; fi');
 
+    PingProcess.Execute;
+    PingStr.LoadFromStream(PingProcess.Output);
+    Synchronize(@ShowRegistration);
+
+    //Если регистрация пройдена - выводим всё остальное
+    if PingStr[0] = 'yes' then
+    begin
+      //Статус ON/OFF
+      PingProcess.Parameters.Delete(1);
+      PingProcess.Parameters.Add(
+        '[[ $(ip -br a | grep CloudflareWARP) ]] && echo "yes" || echo "no"');
       PingProcess.Execute;
       PingStr.LoadFromStream(PingProcess.Output);
-      Synchronize(@ShowRegistration);
+      Synchronize(@ShowStatus);
 
-      //Если регистрация пройдена - выводим всё остальное
-      if PingStr[0] = 'yes' then
-      begin
-        //Статус ON/OFF
-        PingProcess.Parameters.Delete(1);
-        PingProcess.Parameters.Add(
-          '[[ $(ip -br a | grep CloudflareWARP) ]] && echo "yes" || echo "no"');
-        PingProcess.Execute;
-        PingStr.LoadFromStream(PingProcess.Output);
-        Synchronize(@ShowStatus);
-
-        //Статус IN/OUT
-        PingProcess.Parameters.Delete(1);
-        PingProcess.Parameters.Add('warp-cli --accept-tos warp-stats | awk ' +
-          '''' + 'NR == 3{print$2$4}' + '''');
-        PingProcess.Execute;
-        PingStr.LoadFromStream(PingProcess.Output);
-        Synchronize(@ShowUpDown);
-      end;
-
-      Sleep(1000);
-    finally
-      PingStr.Free;
-      PingProcess.Free;
+      //Статус IN/OUT
+      PingProcess.Parameters.Delete(1);
+      PingProcess.Parameters.Add('warp-cli --accept-tos warp-stats | awk ' +
+        '''' + 'NR == 3{print$2$4}' + '''');
+      PingProcess.Execute;
+      PingStr.LoadFromStream(PingProcess.Output);
+      Synchronize(@ShowUpDown);
     end;
+
+    Sleep(1000);
+  finally
+    PingStr.Free;
+    PingProcess.Free;
+  end;
 end;
 
 //Состояние Регистрации
@@ -99,6 +99,7 @@ begin
     if Trim(PingStr[0]) = 'no' then
     begin
       StartBtn.ImageIndex := 0;
+      StartBtn.Repaint;
       StatusLabel.Color := clGray;
       StatusLabel.Caption := WaitRegistration;
     end;
