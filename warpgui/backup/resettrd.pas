@@ -67,7 +67,6 @@ begin
   with MainForm do
   begin
     WarpRegister;
-    StartProcess('warp-cli --accept-tos connect');
     Caption := Application.Title;
   end;
 end;

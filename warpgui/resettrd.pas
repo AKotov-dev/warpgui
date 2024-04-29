@@ -45,7 +45,7 @@ begin
 
     //Сброс настроек WARP
     ResetProcess.Parameters.Add(
-      'warp-cli --accept-tos reset-settings');
+      'warp-cli --accept-tos settings reset');
 
     ResetProcess.Execute;
 
