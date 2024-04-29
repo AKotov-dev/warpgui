@@ -46,15 +46,15 @@ resourcestring
 var
   MainForm: TMainForm;
   StartChangeEndpoint, UpdateKeyPress: boolean;
-//Флаг окончания смены EndPoint [F12] и кнопки Update [F2]
+  //Флаг окончания смены EndPoint [F12] и кнопки Update [F2]
 
 implementation
 
 uses PingTRD, Update_TRD, Change_Endpoint_TRD, ResetTRD;
 
-{$R *.lfm}
+  {$R *.lfm}
 
-{ TMainForm }
+  { TMainForm }
 
 //1. Проверка статуса warp-svc.service (active/inactive)
 //2. Регистрация warp-cli register
@@ -84,7 +84,7 @@ begin
     //2. Проверка/Запуск регистрации
     ExProcess.Parameters.Delete(1);
     ExProcess.Parameters.Add(
-      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]] && warp-cli --accept-tos register');
+      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]] && warp-cli --accept-tos registration new');
 
     ExProcess.Execute;
 
