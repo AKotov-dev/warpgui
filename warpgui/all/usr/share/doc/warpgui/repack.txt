@@ -1,21 +1,21 @@
-This repack.txt file was created automatically by RPMCreator v2.5
+This repack.txt file was created automatically by RPMCreator v2.6
 It contains the necessary information to recreation the program from the source code
 
 Information about the program:
 ---
 Name of program: warpgui
-Version of program: 1.7
+Version of program: 2.2
 Program development tool: Lazarus
-Version of program development tool: 2.2.4
+Version of program development tool: 3.2
 URL the sources + binaries of the author: https://github.com/AKotov-dev/warpgui
 
 Information about the rpm-package:
 ---
 Build method: Portable RPM
-Time stamp: 19-6-23 08:51:57
+Time stamp: 9-10-24 08:17:37
 
 Name: warpgui
-Version: 1.7
+Version: 2.2
 Release: 0.mrx9
 Group: Networking/Other
 License: GPLv3
@@ -23,11 +23,11 @@ Maintainer: Alex Kotov
 Vendor: alex_q_2000 (C) 2023
 URL of the copy source codes: https://pkg.cloudflareclient.com/packages/cloudflare-warp
 
-Summary: GUI for Cloudflare ™ WARP
+Summary: GUI for Cloudflare (TM) WARP
 
 Description:
 ---
-GUI for Cloudflare ™ WARP
+GUI for Cloudflare (TM) WARP
 URL: https://developers.cloudflare.com/warp-client/get-started/linux/
 
 The cloudflare-warp package is now updated as part of a general system update from the Cloudflare ™ WARP repository
@@ -45,6 +45,33 @@ GUI for Cloudflare ™ WARP
 ---
 URL: https://developers.cloudflare.com/warp-client/get-started/linux/
 Install cloudflare-warp from repo: https://pkg.cloudflareclient.com/#rhel
+
+v2.2
++ warp-cli: "warp-stats" command deprecated; "tunnel stats" instead
++ RPM packages for Mageia-9
+
+v2.1
++ warp-cli: the "register" command deprecated; "registration new" instead
++ warp-cli: the "reset-settings" command deprecated; "settings reset" instead
++ warp-cli: the "set-custom-endpoint" command deprecated; "tunnel endpoint set" instead
++ warp-cli: the "clear-custom-endpoint" command deprecated; "tunnel endpoint reset" instead
++ RPM packages for Mageia-9
+
+v2.0
++ /usr/bin/warp-update: added forced `systemctl restart warp-svc`
++ RPM packages for Mageia-8 and Mageia-9
+
+Description: `cloudflare-warp-2023.9.301`rpm package contains an incorrect script after updating.
+
+**Note:** Around March 2024, Cloudflare (TM) WARP in Russia may be permanently blocked. It is highly recommended to switch to the XTLS-Reality protocol and use [XRayGUI](https://github.com/AKotov-dev/XRayGUI) - for individual protection or to [SocksGW](https://github.com/AKotov-dev/SocksGW) - to protect your families. Good luck.
+
+v1.9
++ Fixing /bin/warp-update
++ Packages for Mageia-8/9
+
+**Note:** After updating the package, don't forget to update `cloudflare-warp` (F2 key in `warpgui` window)
+
+I remind you, if registration is not possible in your country (status: `registration attempt...`), close `warpgui`, start any VPN, open `warpgui` and wait 3-5 seconds. If there is no connection after registration (status: `waiting for connection...`), press [F12] sequentially, with an interval of 3-5 seconds, until the connection is established. Good luck.
 
 v1.8
 + Improving the updater [F2]

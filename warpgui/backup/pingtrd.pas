@@ -46,13 +46,13 @@ begin
     PingProcess.Parameters.Add('-c');
 
     //Проверка длительного зависания на плохом EndPoint (уходим от блокировки, ожидание 2 сек)
-      PingProcess.Parameters.Add(
+     { PingProcess.Parameters.Add(
         'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; '
         + '((i++)); if [[ $i == 3 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
 
       PingProcess.Parameters.Add('sleep 0');
 
-      PingProcess.Execute;
+      PingProcess.Execute; }
 
     //Регистрация (yes/no?)
     //  PingProcess.Parameters.Delete(1);
