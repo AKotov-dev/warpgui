@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: tmainform.caption
 msgid "WARP"
@@ -50,6 +50,26 @@ msgstr "замена endpoint"
 #: unit1.resetwarpmsg
 msgid "reset settings"
 msgstr "сброс настроек"
+
+#: unit1.sresetactivation
+msgid ""
+"Reset/Activation WARP\n"
+"\n"
+"\"YES\" - new protocol, \"NO\" - old protocol\n"
+"\n"
+"1. Enable VPN (if you are in Russia)\n"
+"2. Select protocol: press \"Yes\" or \"No\"\n"
+"3. Wait for the status \"waiting for connection...\"\n"
+"4. Disable VPN (if you are in Russia) and press warpgui"
+msgstr ""
+"Сброс/Активация WARP\n"
+"\n"
+"\"ДА\" - новый протокол, \"НЕТ\" - старый протокол\n"
+"\n"
+"1. Включите VPN (если вы в России)\n"
+"2. Укажите протокол: нажмите \"Да\" или \"Нет\"\n"
+"3. Дождитесь статуса \"ожидание соединения...\"\n"
+"4. Отключите VPN (если вы в России) и нажмите warpgui"
 
 #: unit1.updatewarpmsg
 msgid "warp update"

@@ -1,4 +1,4 @@
-unit ResetTRD;
+unit ResetTRD_NEW;
 
 {$mode ObjFPC}{$H+}
 
@@ -8,7 +8,7 @@ uses
   Classes, Forms, Controls, SysUtils, Process;
 
 type
-  ResetWarp = class(TThread)
+  ResetWarpNEW = class(TThread)
   private
 
     { Private declarations }
@@ -24,10 +24,10 @@ implementation
 
 uses Unit1;
 
-{ TRD }
+  { TRD }
 
-//Смена endpoint
-procedure ResetWarp.Execute;
+//Сброс для нового протокола
+procedure ResetWarpNEW.Execute;
 var
   ResetProcess: TProcess;
 begin
@@ -43,10 +43,10 @@ begin
     ResetProcess.Parameters.Add('-c');
     ResetProcess.Options := [poWaitOnExit];
 
-    //Сброс настроек WARP (WireGuard)
+    //Сброс настроек WARP
     ResetProcess.Parameters.Add(
       'warp-cli --accept-tos disconnect; warp-cli --accept-tos settings reset; ' +
-      'warp-cli --accept-tos registration new; warp-cli --accept-tos tunnel protocol set WireGuard');
+      'warp-cli --accept-tos registration new; warp-cli --accept-tos tunnel protocol set MASQUE');
 
     ResetProcess.Execute;
 
@@ -58,16 +58,16 @@ begin
 end;
 
 //---Статус сброса настроек WARP---
-procedure ResetWarp.StartReset;
+procedure ResetWarpNEW.StartReset;
 begin
   MainForm.Caption := ResetWarpMsg + '...';
 end;
 
-procedure ResetWarp.StopReset;
+procedure ResetWarpNEW.StopReset;
 begin
   with MainForm do
   begin
-  //  WarpRegister;
+    // WarpRegister;
     Caption := Application.Title;
   end;
 end;

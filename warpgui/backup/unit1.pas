@@ -42,6 +42,13 @@ resourcestring
   ResetWarpMsg = 'reset settings';
   UpdateWarpMsg = 'warp update';
   WaitRegistration = 'registration attempt...';
+  SResetActivation = 'Reset/Activation WARP' + sLineBreak +
+    '"YES" - new protocol, "NO" - old protocol' + sLineBreak + sLineBreak +
+    '1. Enable VPN (if you are in Russia)' + sLineBreak +
+    '2. Select protocol: press "Yes" or "No"' + sLineBreak +
+    '3. Wait for the status "waiting for connection..."' + sLineBreak +
+    '4. Disable VPN (if you are in Russia) and press warpgui';
+
 
 var
   MainForm: TMainForm;
@@ -50,7 +57,7 @@ var
 
 implementation
 
-uses PingTRD, Update_TRD, Change_Endpoint_TRD, ResetTRD;
+uses PingTRD, Update_TRD, Change_Endpoint_TRD, ResetTRD, ResetTRD_NEW;
 
   {$R *.lfm}
 
@@ -81,10 +88,15 @@ begin
       Application.Terminate;
     end;
 
-    //2. Проверка/Запуск регистрации
+    //2. Проверка/Запуск регистрации (Если Лицензия отсутствует - активировать старым методом WireGuard)
     ExProcess.Parameters.Delete(1);
     ExProcess.Parameters.Add(
-      '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]] && warp-cli --accept-tos registration new');
+      // '[[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]] && warp-cli --accept-tos registration new');
+      'if [[ -z $(warp-cli --accept-tos registration show | grep "License:") ]]; then '
+      +
+      'warp-cli --accept-tos disconnect; warp-cli --accept-tos settings reset; ' +
+      'warp-cli --accept-tos registration new; warp-cli --accept-tos tunnel protocol set WireGuard; fi');
+
 
     ExProcess.Execute;
 
@@ -119,7 +131,6 @@ begin
 
   if StartBtn.ImageIndex = 0 then
   begin
-   Application.ProcessMessages;
     StatusLabel.Caption := ConnectionAttempt;
 
     //Проверка длительного зависания на плохом EndPoint (уходим от блокировки, ожидание 3 сек)
@@ -160,8 +171,27 @@ end;
 //Опрос клавы
 procedure TMainForm.FormKeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
 var
-  FChangeEndpointThread, FResetWarpThread, FUpdateThread: TThread;
+  FChangeEndpointThread, FResetWarpThread, FResetWarpThreadNEW, FUpdateThread: TThread;
 begin
+  //Сброс настроек WARP [F11]
+  if (Key = $7A) and (StartChangeEndpoint = False) then
+  begin
+    case MessageDlg(SResetActivation, mtConfirmation,
+        [mbYes, mbNo, mbCancel], 0) of
+      mrYes: //Поток сброса настроек (NEW - MASQUE)
+      begin
+        FResetWarpThreadNEW := ResetWarp.Create(False);
+        FResetWarpThreadNEW.Priority := tpNormal;
+      end;
+      mrNo: //Поток сброса настроек (OLD - WireGuard)
+      begin
+        FResetWarpThread := ResetWarp.Create(False);
+        FResetWarpThread.Priority := tpNormal;
+      end;
+      mrCancel: Exit;
+    end;
+  end;
+
   //Установка/Обновление cloudflare-warp [F2]
   if (Key = $71) and (StartChangeEndpoint = False) then
   begin
@@ -171,18 +201,10 @@ begin
     FUpdateThread.Priority := tpNormal;
   end;
 
-  //Сброс настроек WARP [F11]
-  if (Key = $7A) and (StartChangeEndpoint = False) then
-  begin
-    //Поток сброса настроек WARP
-    FResetWarpThread := ResetWarp.Create(False);
-    FResetWarpThread.Priority := tpNormal;
-  end;
-
   //Замена EndPoint [F12]
   if (Key = $7B) and (StartChangeEndpoint = False) then
   begin
-    //Поток проверки обновлений WARP
+    //Поток замены EndPoint WARP
     FChangeEndpointThread := ChangeEndpoint.Create(False);
     FChangeEndpointThread.Priority := tpNormal;
   end;
