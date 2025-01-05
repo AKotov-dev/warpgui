@@ -42,7 +42,7 @@ resourcestring
   ResetWarpMsg = 'reset settings';
   UpdateWarpMsg = 'warp update';
   WaitRegistration = 'registration attempt...';
-  SResetActivation = 'Reset/Activation WARP' + sLineBreak +
+  SResetActivation = 'Reset/Activation WARP' + sLineBreak + sLineBreak +
     '"YES" - new protocol, "NO" - old protocol' + sLineBreak + sLineBreak +
     '1. Enable VPN (if you are in Russia)' + sLineBreak +
     '2. Select protocol: press "Yes" or "No"' + sLineBreak +
