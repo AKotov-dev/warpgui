@@ -43,8 +43,9 @@ begin
     ResetProcess.Parameters.Add('-c');
     ResetProcess.Options := [poWaitOnExit];
 
-    //Сброс настроек WARP
+    //Сброс настроек WARP + masque flag
     ResetProcess.Parameters.Add(
+      '> ~/.config/warpgui/masque; ' +
       'warp-cli --accept-tos disconnect; warp-cli --accept-tos settings reset; ' +
       'warp-cli --accept-tos registration new; warp-cli --accept-tos tunnel protocol set MASQUE');
 

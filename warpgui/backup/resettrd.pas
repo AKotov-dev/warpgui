@@ -24,7 +24,7 @@ implementation
 
 uses Unit1;
 
-{ TRD }
+  { TRD }
 
 //Смена endpoint
 procedure ResetWarp.Execute;
@@ -45,6 +45,7 @@ begin
 
     //Сброс настроек WARP (WireGuard)
     ResetProcess.Parameters.Add(
+      'rm -f ~/.config/warpgui/masque' +
       'warp-cli --accept-tos disconnect; warp-cli --accept-tos settings reset; ' +
       'warp-cli --accept-tos registration new; warp-cli --accept-tos tunnel protocol set WireGuard');
 
@@ -67,7 +68,7 @@ procedure ResetWarp.StopReset;
 begin
   with MainForm do
   begin
-  //  WarpRegister;
+    //  WarpRegister;
     Caption := Application.Title;
   end;
 end;

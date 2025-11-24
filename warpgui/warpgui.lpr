@@ -11,7 +11,7 @@ uses
   Unit1,
   PingTRD,
   change_endpoint_trd,
-  ResetTRD;
+  ResetTRD, ResetTRD_NEW;
 
   {$R *.res}
 

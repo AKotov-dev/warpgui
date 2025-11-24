@@ -38,7 +38,7 @@ resourcestring
   WarpSVCStatus = 'warp-svc.service is not running!' + sLineBreak +
     sLineBreak + 'systemctl enable warp-svc.service' + sLineBreak +
     'systemctl restart warp-svc.service';
-  EndPointChange = 'replacing endpoint (old protocol)';
+  EndPointChange = 'replacing endpoint';
   ResetWarpMsg = 'reset settings';
   UpdateWarpMsg = 'warp update';
   WaitRegistration = 'registration attempt...';
@@ -169,7 +169,9 @@ begin
   //Проверка/Регистрация WARP
   WarpRegister;
 
-  IniPropStorage1.IniFileName := GetUserDir + '.config/warpgui.ini';
+  if not DirectoryExists(GetUserDir + '.config/warpgui') then MkDir(GetUserDir + '.config/warpgui');
+
+  IniPropStorage1.IniFileName := GetUserDir + '.config/warpgui/warpgui.ini';
 
   //Поток проверки пинга
   FCheckPingThread := CheckPing.Create(False);

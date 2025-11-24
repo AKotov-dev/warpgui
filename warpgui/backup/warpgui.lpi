@@ -102,6 +102,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResetTRD"/>
       </Unit>
+      <Unit>
+        <Filename Value="resettrd_new.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ResetTRD_NEW"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

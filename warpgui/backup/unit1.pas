@@ -38,7 +38,7 @@ resourcestring
   WarpSVCStatus = 'warp-svc.service is not running!' + sLineBreak +
     sLineBreak + 'systemctl enable warp-svc.service' + sLineBreak +
     'systemctl restart warp-svc.service';
-  EndPointChange = 'replacing endpoint';
+  EndPointChange = 'replacing endpoint (old protocol)';
   ResetWarpMsg = 'reset settings';
   UpdateWarpMsg = 'warp update';
   WaitRegistration = 'registration attempt...';
@@ -97,7 +97,6 @@ begin
       'warp-cli --accept-tos disconnect; warp-cli --accept-tos settings reset; ' +
       'warp-cli --accept-tos registration new; warp-cli --accept-tos tunnel protocol set WireGuard; fi');
 
-
     ExProcess.Execute;
 
   finally
@@ -145,6 +144,7 @@ begin
   end;
 end;
 
+
 procedure TMainForm.FormCreate(Sender: TObject);
 var
   bmp: TBitmap;
@@ -169,7 +169,9 @@ begin
   //Проверка/Регистрация WARP
   WarpRegister;
 
-  IniPropStorage1.IniFileName := GetUserDir + '.config/warpgui.ini';
+  if not DirectoryExists(GetUserDir + '.config/warpgui') then MkDir(GetUserDir + '.config/warpgui');
+
+  IniPropStorage1.IniFileName := GetUserDir + '.config/warpgui/warpgui.ini';
 
   //Поток проверки пинга
   FCheckPingThread := CheckPing.Create(False);

@@ -44,8 +44,8 @@ msgid "disconnection..."
 msgstr "отключение..."
 
 #: unit1.endpointchange
-msgid "replacing endpoint (old protocol)"
-msgstr "замена endpoint (старый протокол)"
+msgid "replacing endpoint"
+msgstr "замена endpoint"
 
 #: unit1.resetwarpmsg
 msgid "reset settings"
