@@ -29,9 +29,12 @@ uses Unit1;
 //Смена endpoint
 procedure ChangeEndpoint.Execute;
 var
-  Proto: String;
+  Protocol: string;
   ChangeProcess: TProcess;
 begin
+  //По какому протоколу изменять endpoint
+  Protocol := MainForm.IniPropStorage1.ReadString('PROTOCOL', 'wireguard');
+
   FreeOnTerminate := True; //Уничтожать по завершении
   try
     //Флаг запуска смены EndPoint/ResetWarp
@@ -44,31 +47,30 @@ begin
     ChangeProcess.Parameters.Add('-c');
     ChangeProcess.Options := [poWaitOnExit];
 
-    if not FileExists(GetUserDir + '.config/warpgui/masque') then
-    //WireGuard
-    //Замена EndPoint: замена, проба подключения (2 секунды ожидания)
-    //warp-cli после одиночного connect сам пытается сделать несколько попыток подключения
-    //если неудача или окончание спустя 2 сек флаг StartChangeEndpoint = False, поток PingTRD сбрасывает состояние Connecting
-    ChangeProcess.Parameters.Add(
-      'warp-cli --accept-tos tunnel endpoint reset; ' +
-      'arr=("500" "4500" "2408"); rand=$[$RANDOM % ${#arr[@]}]; ' +
-      'warp-cli --accept-tos tunnel endpoint set 162.159.19$((2 + $RANDOM %2)).$((1 + $RANDOM %10)):${arr[$rand]}; '
-      + 'warp-cli --accept-tos connect; ' +
-      'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; ' +
-      '((i++)); if [[ $i == 2 ]]; then warp-cli --accept-tos disconnect; break; fi; done')
-   else
-       //MASQUE
-    ChangeProcess.Parameters.Add(
-      'warp-cli --accept-tos tunnel endpoint reset; ' +
-      'arr=("443" "500" "8443"); rand=$[$RANDOM % ${#arr[@]}]; ' +
-      'warp-cli --accept-tos tunnel endpoint set 162.159.19$((8 + $RANDOM %2)).$((1 + $RANDOM %2)):${arr[$rand]}; '
-      + 'warp-cli --accept-tos connect; ' +
-      'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; ' +
-      '((i++)); if [[ $i == 2 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
 
+    if Protocol = 'wireguard' then
+      //WireGuard
+      //Замена EndPoint: замена, проба подключения (2 секунды ожидания)
+      //warp-cli после одиночного connect сам пытается сделать несколько попыток подключения
+      //если неудача или окончание спустя 2 сек флаг StartChangeEndpoint = False, поток PingTRD сбрасывает состояние Connecting
+      ChangeProcess.Parameters.Add(
+        'warp-cli --accept-tos tunnel endpoint reset; ' +
+        'arr=("500" "4500" "2408"); rand=$[$RANDOM % ${#arr[@]}]; ' +
+        'warp-cli --accept-tos tunnel endpoint set 162.159.19$((2 + $RANDOM %2)).$((1 + $RANDOM %10)):${arr[$rand]}; '
+        + 'warp-cli --accept-tos connect; ' +
+        'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; ' +
+        '((i++)); if [[ $i == 2 ]]; then warp-cli --accept-tos disconnect; break; fi; done')
+    else
+      //MASQUE
+      ChangeProcess.Parameters.Add(
+        'warp-cli --accept-tos tunnel endpoint reset; ' +
+        'arr=("443" "500" "8443"); rand=$[$RANDOM % ${#arr[@]}]; ' +
+        'warp-cli --accept-tos tunnel endpoint set 162.159.19$((8 + $RANDOM %2)).$((1 + $RANDOM %2)):${arr[$rand]}; '
+        + 'warp-cli --accept-tos connect; ' +
+        'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; ' +
+        '((i++)); if [[ $i == 2 ]]; then warp-cli --accept-tos disconnect; break; fi; done');
 
     ChangeProcess.Execute;
-
 
   finally
     Synchronize(@StopChange);

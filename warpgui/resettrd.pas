@@ -45,7 +45,6 @@ begin
 
     //Сброс настроек WARP (WireGuard) + remove masque flag
     ResetProcess.Parameters.Add(
-      'rm -f ~/.config/warpgui/masque' +
       'warp-cli --accept-tos disconnect; warp-cli --accept-tos settings reset; ' +
       'warp-cli --accept-tos registration new; warp-cli --accept-tos tunnel protocol set WireGuard');
 

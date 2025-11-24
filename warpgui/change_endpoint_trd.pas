@@ -29,9 +29,12 @@ uses Unit1;
 //Смена endpoint
 procedure ChangeEndpoint.Execute;
 var
-  Proto: string;
+  Protocol: string;
   ChangeProcess: TProcess;
 begin
+  //По какому протоколу изменять endpoint (Default: witrguard)
+  Protocol := MainForm.IniPropStorage1.ReadString('PROTOCOL', 'wireguard');
+
   FreeOnTerminate := True; //Уничтожать по завершении
   try
     //Флаг запуска смены EndPoint/ResetWarp
@@ -44,7 +47,8 @@ begin
     ChangeProcess.Parameters.Add('-c');
     ChangeProcess.Options := [poWaitOnExit];
 
-    if not FileExists(GetUserDir + '.config/warpgui/masque') then
+
+    if Protocol = 'wireguard' then
       //WireGuard
       //Замена EndPoint: замена, проба подключения (2 секунды ожидания)
       //warp-cli после одиночного connect сам пытается сделать несколько попыток подключения
