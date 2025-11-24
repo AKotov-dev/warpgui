@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 292
+  Left = 315
   Height = 117
-  Top = 127
+  Top = 126
   Width = 238
   AlphaBlendValue = 225
   AutoSize = True
@@ -11,10 +11,10 @@ object MainForm: TMainForm
   ClientHeight = 117
   ClientWidth = 238
   KeyPreview = True
+  SessionProperties = 'Top;Left'
+  LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
   OnKeyUp = FormKeyUp
-  SessionProperties = 'Top;Left'
-  LCLVersion = '3.6.0.0'
   object ToolBar1: TToolBar
     Left = 0
     Height = 92
@@ -41,10 +41,10 @@ object MainForm: TMainForm
       Top = 0
       Caption = 'IN-0,0kB    OUT-0,0kB'
       ImageIndex = 0
-      OnClick = StartBtnClick
       ParentShowHint = False
       ShowCaption = False
       ShowHint = True
+      OnClick = StartBtnClick
     end
   end
   object StatusLabel: TLabel

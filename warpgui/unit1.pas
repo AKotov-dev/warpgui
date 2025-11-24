@@ -38,7 +38,7 @@ resourcestring
   WarpSVCStatus = 'warp-svc.service is not running!' + sLineBreak +
     sLineBreak + 'systemctl enable warp-svc.service' + sLineBreak +
     'systemctl restart warp-svc.service';
-  EndPointChange = 'replacing endpoint';
+  EndPointChange = 'replacing endpoint (old protocol)';
   ResetWarpMsg = 'reset settings';
   UpdateWarpMsg = 'warp update';
   WaitRegistration = 'registration attempt...';
@@ -97,7 +97,6 @@ begin
       'warp-cli --accept-tos disconnect; warp-cli --accept-tos settings reset; ' +
       'warp-cli --accept-tos registration new; warp-cli --accept-tos tunnel protocol set WireGuard; fi');
 
-
     ExProcess.Execute;
 
   finally
@@ -145,11 +144,24 @@ begin
   end;
 end;
 
+
 procedure TMainForm.FormCreate(Sender: TObject);
 var
+  bmp: TBitmap;
   FCheckPingThread, FUpdateThread: TThread;
 begin
   MainForm.Caption := Application.Title;
+
+  // Устраняем баг иконки приложения
+  bmp := TBitmap.Create;
+  try
+    bmp.PixelFormat := pf32bit;
+    ImageList1.GetBitmap(0, bmp);
+    ;
+    Application.Icon.Assign(bmp);
+  finally
+    bmp.Free;
+  end;
 
   //Инициализация флага одиночного нажатия F11/F12
   StartChangeEndpoint := False;

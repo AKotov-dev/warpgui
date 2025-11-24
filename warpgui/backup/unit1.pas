@@ -147,9 +147,21 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 var
+  bmp: TBitmap;
   FCheckPingThread, FUpdateThread: TThread;
 begin
   MainForm.Caption := Application.Title;
+
+  // Устраняем баг иконки приложения
+  bmp := TBitmap.Create;
+  try
+    bmp.PixelFormat := pf32bit;
+    ImageList1.GetBitmap(0, bmp);
+    ;
+    Application.Icon.Assign(bmp);
+  finally
+    bmp.Free;
+  end;
 
   //Инициализация флага одиночного нажатия F11/F12
   StartChangeEndpoint := False;
