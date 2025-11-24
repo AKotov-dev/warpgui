@@ -38,9 +38,10 @@
       <Unit>
         <Filename Value="warpgui.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="17"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="19"/>
         <UsageCount Value="52"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
@@ -49,7 +50,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <CursorPos X="12"/>
+        <CursorPos X="13"/>
         <UsageCount Value="52"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -59,26 +60,25 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingTRD"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="70"/>
-        <CursorPos X="30" Y="81"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="43"/>
+        <CursorPos X="16" Y="60"/>
         <UsageCount Value="51"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="update_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="45"/>
-        <CursorPos X="17"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="18"/>
         <UsageCount Value="41"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="change_endpoint_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="7"/>
-        <CursorPos Y="36"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="27"/>
         <UsageCount Value="35"/>
         <Loaded Value="True"/>
       </Unit>
@@ -86,17 +86,16 @@
         <Filename Value="resettrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResetTRD"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="14"/>
-        <CursorPos X="5" Y="70"/>
+        <EditorIndex Value="5"/>
+        <CursorPos X="16"/>
         <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="resettrd_new.pas"/>
         <UnitName Value="ResetTRD_NEW"/>
-        <EditorIndex Value="4"/>
-        <CursorPos X="3" Y="11"/>
+        <EditorIndex Value="6"/>
+        <CursorPos X="20"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>

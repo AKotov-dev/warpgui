@@ -45,7 +45,7 @@ begin
       UpdateProcess.Parameters.Add('warp-update-pkexec')
     else
       UpdateProcess.Parameters.Add(
-        '[ "$(type -p warp-svc1)" ] || warp-update-pkexec');
+        '[ "$(type -p warp-svc)" ] || warp-update-pkexec');
 
     //Запуск Загрузки/Обновления
     UpdateProcess.Execute;

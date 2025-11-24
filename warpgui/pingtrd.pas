@@ -52,13 +52,14 @@ begin
 
       PingProcess.Parameters.Add('sleep 0');
 
-      PingProcess.Execute; }
+      PingProcess.Execute;
 
     //Регистрация (yes/no?)
-    //  PingProcess.Parameters.Delete(1);
+      PingProcess.Parameters.Delete(1); }
     PingProcess.Parameters.Add(
-      'if [[ $(warp-cli --accept-tos status | grep -iE "registration|network|failed|error") ]]; '
-      + 'then echo "no"; else echo "yes"; fi');
+      'if [[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]]; '
+      +
+      'then echo "no"; else echo "yes"; fi');
 
     PingProcess.Execute;
     PingStr.LoadFromStream(PingProcess.Output);

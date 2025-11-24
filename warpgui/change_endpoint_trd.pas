@@ -24,7 +24,7 @@ implementation
 
 uses Unit1;
 
-{ TRD }
+  { TRD }
 
 //Смена endpoint
 procedure ChangeEndpoint.Execute;

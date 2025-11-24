@@ -52,12 +52,12 @@ begin
 
       PingProcess.Parameters.Add('sleep 0');
 
-      PingProcess.Execute; }
+      PingProcess.Execute;
 
     //Регистрация (yes/no?)
-    //  PingProcess.Parameters.Delete(1);
+      PingProcess.Parameters.Delete(1); }
     PingProcess.Parameters.Add(
-      'if [[ $(warp-cli --accept-tos status | grep -iE "registration|network|failed|error") ]]; '
+      'if [[ $(warp-cli --accept-tos status | grep -iE "registration|failed|error") ]]; '
       + 'then echo "no"; else echo "yes"; fi');
 
     PingProcess.Execute;
@@ -78,7 +78,7 @@ begin
       //Статус IN/OUT
       PingProcess.Parameters.Delete(1);
 
-      //IN/OUT output parser has been changed (warp-cli 2025.2.600.0)
+      //Changed IN/OUT parser (warp-cli 2025.2.600.0)
       PingProcess.Parameters.Add(
         'warp-cli --accept-tos tunnel stats | grep "Sent:" | awk ' +
         '''' + '{print$2$4}' + '''');

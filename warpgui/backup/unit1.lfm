@@ -14,7 +14,7 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnKeyUp = FormKeyUp
   SessionProperties = 'Top;Left'
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '3.6.0.0'
   object ToolBar1: TToolBar
     Left = 0
     Height = 92

@@ -24,7 +24,7 @@ implementation
 
 uses Unit1;
 
-{ TRD }
+  { TRD }
 
 //Смена endpoint
 procedure ResetWarp.Execute;
@@ -67,7 +67,7 @@ procedure ResetWarp.StopReset;
 begin
   with MainForm do
   begin
-  //  WarpRegister;
+    //  WarpRegister;
     Caption := Application.Title;
   end;
 end;

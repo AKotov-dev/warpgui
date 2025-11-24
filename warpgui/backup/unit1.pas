@@ -180,7 +180,7 @@ begin
         [mbYes, mbNo, mbCancel], 0) of
       mrYes: //Поток сброса настроек (NEW - MASQUE)
       begin
-        FResetWarpThreadNEW := ResetWarp.Create(False);
+        FResetWarpThreadNEW := ResetWarpNEW.Create(False);
         FResetWarpThreadNEW.Priority := tpNormal;
       end;
       mrNo: //Поток сброса настроек (OLD - WireGuard)

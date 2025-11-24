@@ -24,7 +24,7 @@ implementation
 
 uses unit1;
 
-{ TRD }
+  { TRD }
 
 //Загрузка/Обновление WARP
 procedure CheckUpdate.Execute;
