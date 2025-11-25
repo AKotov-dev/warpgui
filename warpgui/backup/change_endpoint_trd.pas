@@ -32,7 +32,7 @@ var
   Protocol: string;
   ChangeProcess: TProcess;
 begin
-  //По какому протоколу изменять endpoint
+  //По какому протоколу изменять endpoint (Default: witrguard)
   Protocol := MainForm.IniPropStorage1.ReadString('PROTOCOL', 'wireguard');
 
   FreeOnTerminate := True; //Уничтожать по завершении
@@ -65,7 +65,7 @@ begin
       ChangeProcess.Parameters.Add(
         'warp-cli --accept-tos tunnel endpoint reset; ' +
         'arr=("443" "500" "8443"); rand=$[$RANDOM % ${#arr[@]}]; ' +
-        'warp-cli --accept-tos tunnel endpoint set 162.159.19$((8 + $RANDOM %2)).$((1 + $RANDOM %2)):${arr[$rand]}; '
+        'warp-cli --accept-tos tunnel endpoint set 162.159.$((198 + $RANDOM %2)).$((1 + $RANDOM %2)):${arr[$rand]}; '
         + 'warp-cli --accept-tos connect; ' +
         'i=0; while [[ -z $(ip -br a | grep CloudflareWARP) ]]; do sleep 1; ' +
         '((i++)); if [[ $i == 2 ]]; then warp-cli --accept-tos disconnect; break; fi; done');

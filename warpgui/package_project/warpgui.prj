@@ -23,13 +23,13 @@ group=Networking/Other
 maintainer=Alex Kotov
 
 [VENDOR]
-vendor=alex_q_2000 (C) 2023
+vendor=alex_q_2000 (C) 2025
 
 [SUMMARY]
 summary=GUI for Cloudflare (TM) WARP
 
 [URLCOPY]
-urlcopy=https://pkg.cloudflareclient.com/packages/cloudflare-warp
+urlcopy=https://github.com/AKotov-dev/warpgui
 
 [LICENSE]
 license=GPLv3
@@ -49,14 +49,14 @@ deb=0
 [FILES]
 0=/usr/share/warpgui/
 1=/usr/share/doc/warpgui/
-2=/usr/share/icons/warpgui.png
-3=/usr/share/applications/warpgui.desktop
-4=/usr/bin/warp-update
-5=/usr/bin/warp-update-pkexec
+2=/usr/bin/warp-update
+3=/usr/bin/warp-update-pkexec
+4=/usr/share/icons/warpgui.png
+5=/usr/share/applications/warpgui.desktop
 6=/usr/share/polkit-1/actions/warp-update.policy
 
 [URL32]
-url32=https://github.com/AKotov-dev/warpgui
+url32=https://pkg.cloudflareclient.com/packages/cloudflare-warp
 
 [PROGRAMNAME]
 programname=warpgui
@@ -76,7 +76,7 @@ toolversion=4.4
 5=v2.5
 6=+ Recompiling in Lazarus-4.4
 7=+ Adaptation for warp-cli 2025.9.558.0
-8=+ Endpoint replacement for the NEW protocol [F12] (re-registration required [F11])
+8=+ Endpoint replacement for the new protocol [F12] (re-registration required [F11])
 9=+ RPM packages for Mageia-9
 10=
 11=**Note:** To activate `warp` in Russia, it is most advisable to use a VPN connection [SSTP](https://github.com/AKotov-dev/SSTP-Connector), [IKEv2/IPsec or L2TP/IPsec](https://github.com/AKotov-dev/IPsecCaManager). To activate, use the [F11] button. When activating, select the `new` protocol.
@@ -170,23 +170,3 @@ toolversion=4.4
 99=v1.0
 100=+ Optimization of hints show speed
 101=+ Improved the process of switching endpoints [F12]
-102=
-103=v0.9
-104=+ The registration process has been fixed
-105=+ Possibility of re-registration via reset [F11]
-106=
-107=v0.8
-108=+ [F11] - resetting WARP settings to default
-109=+ Automatic connection when changing endpoints [F12], status
-110=+ Improved response to communication channel interruption or blocking
-111=
-112=v0.7
-113=+ Random generation of all possible endpoints (press F12 sequentially)
-114=+ Installing warp-cli/warp-svc from the Cloudflare ™ site
-115=+ Release for Mageia-8 and Mageia-9
-116=
-117=v0.6
-118=+ Improved registration process
-119=+ Connection waiting increased to 3 seconds
-120=+ Channel release if endpoint is unavailable or blocked
-121=+ F12 - emergency endpoint change; one click - new value (10 different variants)

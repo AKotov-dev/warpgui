@@ -169,8 +169,6 @@ begin
   //Проверка/Регистрация WARP
   WarpRegister;
 
-  //if not DirectoryExists(GetUserDir + '.config/warpgui') then MkDir(GetUserDir + '.config/warpgui');
-
   IniPropStorage1.IniFileName := GetUserDir + '.config/warpgui.ini';
 
   //Поток проверки пинга
@@ -194,13 +192,13 @@ begin
         [mbYes, mbNo, mbCancel], 0) of
       mrYes: //Поток сброса настроек (NEW - MASQUE)
       begin
-         IniPropStorage1.WriteString('PROTOCOL', 'masque');
+        IniPropStorage1.WriteString('PROTOCOL', 'masque');
         FResetWarpThreadNEW := ResetWarpNEW.Create(False);
         FResetWarpThreadNEW.Priority := tpNormal;
       end;
       mrNo: //Поток сброса настроек (OLD - WireGuard)
       begin
-         IniPropStorage1.WriteString('PROTOCOL', 'wireguard');
+        IniPropStorage1.WriteString('PROTOCOL', 'wireguard');
         FResetWarpThread := ResetWarp.Create(False);
         FResetWarpThread.Priority := tpNormal;
       end;
